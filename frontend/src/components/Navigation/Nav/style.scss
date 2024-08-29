@@ -1,0 +1,76 @@
+@use "../../../assets/styles/resets";
+@import  "../../../assets/styles/_setting.scss";
+nav {
+    .top {
+        padding: 0 200px;
+        background-color: $violet;
+        @include flex(row, center, space-between, 20px);
+
+        a {
+            color: $light;
+            display: inline-block;
+            margin-right: 15px;
+            padding: 10px 0;
+        }
+    }
+
+    .bottom {
+        padding: 20px 200px;
+        @include grid($gap: 50px);
+        grid-template-columns: 200px 1fr;
+
+        .left {
+            h1.logo {
+                font-size: 35px;
+                color: $darkest-blue;
+                position: relative;
+                top: 10px;
+                font-weight: 900;
+            }
+        }
+
+        .right {
+            @include flex(row, center, space-between, 20px);
+
+            .links {
+                text-align: center;
+
+                a {
+                    display: inline-block;
+                    color: $darkest-blue;
+                    padding: 0 15px;
+
+                    &:hover {
+                        color: $red;
+                    }
+                }
+            }
+
+            .searchbar {
+                padding: 2px;
+                @include flex(row, center, center, 0);
+
+                input {
+                    width: 300px;
+                    padding: 20px;
+                    border-top: 2px solid $border;
+                    border-left: 2px solid $border;
+                    border-bottom: 2px solid $border;
+                    background-color: $light;
+                }
+
+                button {
+                    padding: 20px 25px;
+                    position: relative;
+                    top: 0.6px;
+                    background-color: $red;
+
+                    svg {
+                        transform: scale(2);
+                        color: $light;
+                    }
+                }
+            }
+        }
+    }
+}

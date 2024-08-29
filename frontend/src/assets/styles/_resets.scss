@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import "./setting";
+
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 700
+
+// .josefin-sans-<uniquifier> {
+//     font-family: "Josefin Sans", sans-serif;
+//     font-optical-sizing: auto;
+//     font-weight: <weight>;
+//     font-style: normal;
+//   }
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: 0.2s ease-in-out;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 400;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+}
+a {
+    text-decoration: none;
+}
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px;
+}
+input {
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    background-color: #eee;
+}
+
+
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+
+    .drp-content {
+        max-width: 180px;
+        position: absolute;
+        box-shadow: 0 8px 16px lightgray;
+        top: 37px;
+        left: -10px;
+        display: none;
+
+        p {
+            padding: 10px 20px;
+            background-color: $violet-dark;
+            color: $black;
+            font-weight: normal;
+            font-family: sans-serif;
+
+            &:hover {
+                background-color: $violet;
+                color: $light;
+            }
+        }
+    }
+
+    &:hover {
+        .drp-content {
+            display: block;
+        }
+    }
+}

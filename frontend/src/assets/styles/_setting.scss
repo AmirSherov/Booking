@@ -1,0 +1,32 @@
+$violet: #7E33E0;
+$violet-light: #F6F5FF;
+$violet-dark: #F1F0FF;
+
+$green: #08D15F;
+$green-light: #EBF4F3;
+$border: #E7E6EF;
+
+$red: #FB2E86;
+$darkest-blue: #0D0E43;
+$light: #FFFFFF;
+$black: #111;
+
+// ======================================================================
+// ======================= FLEX =========================================
+// ======================================================================
+@mixin flex($direction: row, $align: center, $justify: center, $gap:10px) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
+// ======================================================================
+// ======================= GRID =========================================
+// ======================================================================
+@mixin grid($columns:12, $size:1fr, $gap:10px) {
+    display: grid;
+    grid-template-columns: repeat($columns, $size);
+    gap: $gap;
+}
+// ======================================================================

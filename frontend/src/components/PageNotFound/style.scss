@@ -1,0 +1,14 @@
+@import "../../assets/styles/setting";
+
+.page-not-found-wrapper {
+    padding: 50px 200px;
+    img {
+        width: 100%;
+        height: 500px;
+    }
+    a.go-home {
+        background-color: $red;
+        color: snow;
+        padding: 10px 20px;
+    }
+}
