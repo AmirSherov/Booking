@@ -1,6 +1,7 @@
-import "./style.scss"
+import "./style.scss";
 import Heading from "../common/Heading"
 import { BsPatchQuestionFill } from "react-icons/bs";
+import Test from "../Test"
 
 function About(props) {
     // props = props ? props : "..."

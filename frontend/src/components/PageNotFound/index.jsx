@@ -1,5 +1,5 @@
-import "./style.scss"
-import NotFoundImg from "../../assets/images/404_page.jpg"
+import "./style.scss";
+import NotFoundImg from "../../assets/images/404_page.jpg";
 import { Link } from "react-router-dom";
 
 function PageNotFound() {

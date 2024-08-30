@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import "./test.scss"
+import { useState } from 'react';
+
 
 function Test(props) {
     const [theme, setTheme] = useState(true)

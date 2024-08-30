@@ -12,4 +12,15 @@
             width:100px;
         }
     }
+   
 }
+.grid-cards{
+    @include grid(4 , 1fr , 50px);
+    position: absolute;
+    left: 20%;
+   }
+   img{
+    position: absolute;
+    top: 1700px;
+    left:20%;
+   }

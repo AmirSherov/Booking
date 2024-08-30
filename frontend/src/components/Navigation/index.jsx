@@ -1,7 +1,6 @@
-import { Outlet, Link } from 'react-router-dom'
-import Nav from "./Nav"
-import "./style.scss"
-
+import { Outlet, Link } from 'react-router-dom';
+import Nav from "./Nav";
+import "./style.scss";
 function Navigation() {
     return (
         <>
@@ -13,7 +12,7 @@ function Navigation() {
                 <Outlet />
             </main>
 
-            <footer></footer>
+            
         </>
     );
 }

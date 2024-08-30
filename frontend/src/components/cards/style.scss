@@ -1,0 +1,62 @@
+@import "../../assets/styles/setting";
+@import "../../assets/styles/_resets.scss";
+.Cards{
+    width: 200px;
+    height:250px;
+    margin-top: 50px;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+.img{
+    width:150px;
+    height:150px;
+    background-color: lightgray;
+    position: absolute;
+    left:13%;
+}
+h3{
+    position: absolute;
+    top: 230px;
+    left: 25px;
+}
+p{
+    position: absolute;
+    top: 170px;
+    left:15px;
+    color: $violet;
+    font-size: 18px;
+    font-weight: 700;
+}
+.circle div:nth-child(1){
+    background: #DE9034;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    justify-content: center;
+   }
+   .circle div:nth-child(2){
+    background: #EC42A2;
+       width: 20px;
+       height: 20px;
+       border-radius: 50%;
+       justify-content: center;
+      }
+      .circle div:nth-child(3){
+        background: #8568FF;
+       width: 20px;
+       height: 20px;
+       border-radius: 50%;
+       justify-content: center;
+      }
+      .circle{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        position: absolute;
+        top: 200px;
+        left: 29%;
+        gap: 10px;
+      }
+}
