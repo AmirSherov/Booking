@@ -2,8 +2,8 @@ import "./style.scss"
 import Cards from "../cards/index.jsx"
 import Heading from "../common/Heading"
 import { FaCartShopping } from "react-icons/fa6";
-import myImg from "../../assets/images/image 1174.png"
-import photo1 from "../../assets/images/photo1.jpg"
+import myImg from "../../assets/images/image 1174.png";
+import Footer from "../Footer";
 function Shop() {
     return (
         <>
@@ -23,43 +23,10 @@ function Shop() {
                 </div>
    
                <div className="grid-cards">
-               <Cards src = {"../../assets/images/photo1.jpg"} title = "Jonathan adler chair">
-               $26.00 $42.00
-               </Cards>
-               <Cards src = {"../../assets/images/makiz.jpg"} title = "Jonathan adler chair">
-               $26.00 $42.00
-               </Cards><Cards src = {"../../assets/images/makiz.jpg"} title = "Jonathan adler chair">
-               $26.00 $42.00
-               </Cards>
-               <Cards src = {"../../assets/images/makiz.jpg"} title = "Jonathan adler chair">
-               $26.00 $42.00
-               </Cards>
-               <Cards src = {"../../assets/images/makiz.jpg"} title = "Jonathan adler chair">
-               $26.00 $42.00
-               </Cards>
-               <Cards src = {"../../assets/images/makiz.jpg"} title = "Jonathan adler chair">
-               $26.00 $42.00
-               </Cards>
-               <Cards src = {"../../assets/images/makiz.jpg"} title = "Jonathan adler chair">
-               $26.00 $42.00
-               </Cards>
-               <Cards src = {"../../assets/images/makiz.jpg"} title = "Jonathan adler chair">
-               $26.00 $42.00
-               </Cards>
-               <Cards src = {"../../assets/images/makiz.jpg"} title = "Jonathan adler chair">
-               $26.00 $42.00
-               </Cards>
-               <Cards src = {"../../assets/images/makiz.jpg"} title = "Jonathan adler chair">
-               $26.00 $42.00
-               </Cards>
-               <Cards src = {"../../assets/images/makiz.jpg"} title = "Jonathan adler chair">
-               $26.00 $42.00
-               </Cards>
-               <Cards src = {"../../assets/images/makiz.jpg"} title = "Jonathan adler chair">
-               $26.00 $42.00
-               </Cards>
+                <Cards />
                </div>
-               <img src= {myImg} alt="" />
+               <img className="footer-img" src= {myImg} alt="" />
+               <Footer title = {1200}/>
             </>
                 )
 }

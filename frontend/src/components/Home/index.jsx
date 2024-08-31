@@ -10,7 +10,7 @@ function Home() {
                 <FaHome />
             </Heading>
         </div>
-        <Footer />
+        <Footer title = {200} />
         </>
     );
 }

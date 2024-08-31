@@ -15,12 +15,12 @@
    
 }
 .grid-cards{
-    @include grid(4 , 1fr , 50px);
     position: absolute;
-    left: 20%;
+    left: 15%;
    }
-   img{
-    position: absolute;
-    top: 1700px;
-    left:20%;
-   }
+.footer-img{
+    position: relative;
+    top: 1100px;
+    left:19%;
+
+}
