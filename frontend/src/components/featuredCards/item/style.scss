@@ -1,0 +1,65 @@
+@use "../../../assets/styles/resets";
+@import "../../../assets//styles/setting";
+
+.featured-cards-div {
+    background: #FFFFFF;
+    box-shadow: 0.5px 0.5px 5px rgb(230, 229, 229);
+    height: 350px;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    &:hover{
+        transform: scale(1.01);
+        box-shadow: 0 15px 70px rgba(0, 132, 255, 0.2), 0 15px 30px rgba(255, 0, 0, 0.1);
+    }
+
+    .featured-cards-main-text {
+        color: $red;
+        font-size: 20px;
+        margin: 10px;
+    }
+
+    .featured-cards-img {
+        background: #F6F7FB;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        height: 200px;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .featured-cards-circles {
+        width: 90px;
+        height: 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+        margin-left: 90px;
+
+        div:nth-child(1) {
+            width: 20px;
+            height: 6px;
+            background: #05E6B7;
+            border-radius: 5px;
+        }
+        div:nth-child(2) {
+            width: 20px;
+            height: 6px;
+            background: $red;
+            border-radius: 5px;
+        }
+        div:nth-child(3) {
+            width: 20px;
+            height: 6px;
+            border-radius: 5px;
+            background: $darkest-blue;
+        }
+    }
+    .featured-cards-price{
+        margin-top: 15px;
+    }
+}
