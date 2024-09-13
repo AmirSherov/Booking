@@ -16,13 +16,13 @@ nav {
     
     .bottom {
         padding: 20px 200px;
-        @include grid($gap: 50px);
-        grid-template-columns: 200px 1fr;
+        @include grid($gap: 300px);
+        grid-template-columns: 250px 1fr;
 
         .left {
             h1.logo {
                 font-size: 35px;
-                color: $darkest-blue;
+                color: white;
                 position: relative;
                 top: 10px;
                 font-weight: 900;
@@ -37,37 +37,11 @@ nav {
 
                 a {
                     display: inline-block;
-                    color: $darkest-blue;
+                    color: white;
                     padding: 0 15px;
 
                     &:hover {
                         color: $red;
-                    }
-                }
-            }
-
-            .searchbar {
-                padding: 2px;
-                @include flex(row, center, center, 0);
-
-                input {
-                    width: 300px;
-                    padding: 20px;
-                    border-top: 2px solid $border;
-                    border-left: 2px solid $border;
-                    border-bottom: 2px solid $border;
-                    background-color: $light;
-                }
-
-                button {
-                    padding: 20px 25px;
-                    position: relative;
-                    top: 0.6px;
-                    background-color: $red;
-
-                    svg {
-                        transform: scale(2);
-                        color: $light;
                     }
                 }
             }
