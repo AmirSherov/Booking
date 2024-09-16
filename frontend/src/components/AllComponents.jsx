@@ -2,7 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './Navigation';
 import Footer from "./Footer";
 import Contact from "../components/Contact/index.jsx"
-import AboutUs from "../components/AboutUs/index.jsx"
+import Products from "../components/Products/index.jsx"
 
 function AllComponents(props) {
     const location = useLocation()
@@ -12,7 +12,7 @@ function AllComponents(props) {
             <Route path="/" element={<Navigation />}>
                 <Route path="/" element={<Footer />}/>
                 <Route path="contact" element={<Contact />}/>
-                <Route index element={<AboutUs />} />
+                <Route index element={<Products />} />
             </Route>
         </Routes>
     )

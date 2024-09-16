@@ -1,8 +1,9 @@
 import "./style.scss";
 import { Link } from "react-router-dom";
-import { IoIosHome } from "react-icons/io";
 import { FcAbout } from "react-icons/fc";
 import { IoIosContact } from "react-icons/io";
+import { AiOutlineProduct } from "react-icons/ai";
+
 function Footer(props) {
   function clear() {
     const inp = document.getElementById('input');
@@ -42,7 +43,7 @@ function Footer(props) {
       </div>
       <div className="Pages">
         <h2>Pages</h2>
-        <p><Link className="linksNav" to={"/"}><IoIosHome />About Us</Link></p>
+        <p><Link className="linksNav" to={"/"}><AiOutlineProduct />Products</Link></p>
         <p><Link className="linksNav" to={"contact"}><FcAbout />Contact</Link></p>
         <p><Link className="linksNav" to={"login"}><IoIosContact />Login</Link></p>
       </div>
