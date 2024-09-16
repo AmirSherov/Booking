@@ -13,14 +13,9 @@ function Footer(props) {
   }
   return (
     <footer style={marginTop}>
-      <div className="animation">
-        <div className="lineVis">
-          <div className="line"></div>
-        </div>
-      </div>
+     
 
-
-      <h1><Link to={"/"} >Booking</Link></h1>
+      <h1><Link className="footerLogo" to={"/"} >Booking</Link></h1>
 
       <div className="inp">
         <input type="text" placeholder="Enter Email Adress" name="" id="input" /> <button onClick={clear} >Sign Up</button>
@@ -47,9 +42,9 @@ function Footer(props) {
       </div>
       <div className="Pages">
         <h2>Pages</h2>
-        <p><Link className="linksNav" to={"/"}><IoIosHome />Home</Link></p>
-        <p><Link className="linksNav" to={"AboutUs"}><FcAbout />About Us</Link></p>
-        <p><Link className="linksNav" to={"Contact"}><IoIosContact />Contact</Link></p>
+        <p><Link className="linksNav" to={"/"}><IoIosHome />About Us</Link></p>
+        <p><Link className="linksNav" to={"contact"}><FcAbout />Contact</Link></p>
+        <p><Link className="linksNav" to={"login"}><IoIosContact />Login</Link></p>
       </div>
       <div className="items">
         <div className="text">©Booking - All Rights Reserved</div>
