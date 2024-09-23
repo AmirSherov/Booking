@@ -3,7 +3,8 @@ import Navigation from './Navigation';
 import Footer from "./Footer";
 import Contact from "../components/Contact/index.jsx"
 import Products from "../components/Products/index.jsx"
-
+import Login from "./login/index.jsx"
+import Registration from "../components/registration/index.jsx"
 function AllComponents(props) {
     const location = useLocation()
 
@@ -12,6 +13,8 @@ function AllComponents(props) {
             <Route path="/" element={<Navigation />}>
                 <Route path="/" element={<Footer />}/>
                 <Route path="contact" element={<Contact />}/>
+                <Route path="login" element={<Login />}/>
+                <Route path="registration" element={<Registration />}/>
                 <Route index element={<Products />} />
             </Route>
         </Routes>

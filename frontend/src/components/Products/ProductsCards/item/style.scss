@@ -1,0 +1,28 @@
+@use "../../../../assets/styles/resets";
+@import "../../../../assets/styles/setting";
+
+.ProductsCardDiv {
+    width: 250px;
+    height: 350px;
+    margin: 20px;
+    color: $light;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 70px;
+    transition: 0.2s linear;
+    box-shadow: -2px 2px 8px rgba(255, 140, 0, 1),
+        2px -2px 8px rgba(255, 140, 0, 1);
+    ;
+    background-color: #333;
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: -4px 8px 16px rgba(255, 140, 0, 1),
+            4px -8px 16px rgba(255, 140, 0, 1);
+        ;
+    }
+
+    .ProductsCardImgClass:hover {
+        transform: scale(1.1);
+    }
+}
