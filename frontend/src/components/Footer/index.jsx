@@ -3,12 +3,9 @@ import { Link } from "react-router-dom";
 import { FcAbout } from "react-icons/fc";
 import { IoIosContact } from "react-icons/io";
 import { AiOutlineProduct } from "react-icons/ai";
+import { MdSaveAs } from "react-icons/md";
 
 function Footer(props) {
-  function clear() {
-    const inp = document.getElementById('input');
-    inp.value = ""
-  }
   let marginTop = {
     "marginTop": props.title
   }
@@ -18,9 +15,6 @@ function Footer(props) {
 
       <h1><Link className="footerLogo" to={"/"} >Booking</Link></h1>
 
-      <div className="inp">
-        <input type="text" placeholder="Enter Email Adress" name="" id="input" /> <button onClick={clear} >Sign Up</button>
-      </div>
       <div className="info">
         <h3>Contact Info</h3>
         <h2>17 Princess Road, London, Greater London NW1 8JR, UK</h2>
@@ -44,7 +38,7 @@ function Footer(props) {
       <div className="Pages">
         <h2>Pages</h2>
         <p><Link className="linksNav" to={"/"}><AiOutlineProduct />Products</Link></p>
-        <p><Link className="linksNav" to={"contact"}><FcAbout />Contact</Link></p>
+        <p><Link className="linksNav" to={"reserv"}><MdSaveAs />Reservations</Link></p>
         <p><Link className="linksNav" to={"login"}><IoIosContact />Login</Link></p>
       </div>
       <div className="items">
