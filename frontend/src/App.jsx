@@ -1,17 +1,19 @@
 import AllComponents from "./components/AllComponents.jsx"
 import { BrowserRouter } from "react-router-dom"
 import { ToastContainer } from 'react-toastify';
-
+import { context, globalReducer, initialState } from "../store"
+import { useReducer } from "react"
 function App() {
+  const [state, dispatch] = useReducer(globalReducer, initialState)
   return (
-    // http://localhost:5173/
-    // http://localhost:5173/about
-    // http://localhost:5173/contact
-    
+  <>
+    <ToastContainer/>
     <BrowserRouter>
-      <AllComponents />
+      <context.Provider value={{ state, dispatch }}>
+        <AllComponents />
+      </context.Provider>
     </BrowserRouter>
+  </>
   )
 }
-
 export default App
