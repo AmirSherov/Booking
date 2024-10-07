@@ -1,18 +1,18 @@
 {
   "Reservs": [
     {
-      "id": "1727987540947",
-      "HotelName": "Amir",
-      "Date": "0001-09-09",
-      "Price": "9999",
-      "Time": "20:59"
+      "id": 1728289562330,
+      "HotelName": "San Tiego",
+      "Date": "23.09.2004",
+      "Price": 300,
+      "Time": "23:00"
     },
     {
-      "id": "1728044640299",
-      "HotelName": "вавава",
-      "Date": "0005-03-31",
-      "Price": "3434",
-      "Time": "04:34"
+      "id": 1728289567158,
+      "HotelName": "San Francisco",
+      "Date": "26.03.2025",
+      "Price": 500,
+      "Time": "17:30"
     }
   ],
   "Users": [
@@ -20,6 +20,18 @@
       "id": "1727987540947",
       "Email": "Amir@gmail.com",
       "Password": "123456789"
+    },
+    {
+      "id": "1728229403871",
+      "Email": "test@gmail.com",
+      "Password": "12345678",
+      "ConfirmPassword": "12345678"
+    },
+    {
+      "id": 1728296082129,
+      "Email": "test@gmail.com",
+      "Password": "123456789",
+      "ConfirmPassword": "123456789"
     }
   ]
 }

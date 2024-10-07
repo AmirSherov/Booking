@@ -7,9 +7,9 @@ function ProductsCards(props) {
     return (
         <>
             <div className="ProductsCardsMainDiv">
-                <ProductsCardItem img = {img1} />
-                <ProductsCardItem img = {img2} />
-                <ProductsCardItem padding = {40} img = {img3} />
+                <span><ProductsCardItem img = {img1} /></span>
+                <span><ProductsCardItem img = {img2} /></span>
+                <span><ProductsCardItem padding = {40} img = {img3} /></span>
             </div>
         </>
     )

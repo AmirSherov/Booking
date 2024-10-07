@@ -9,6 +9,7 @@ import './style.scss'
 function Reserv(props) {
     const [reservs, setReservs] = useState([])
     const [modal, setModal] = useState(false)
+    const [modal1, setModal1] = useState(false)
     const navigate = useNavigate()
     const [newReserv, setNewReserv] = useState({
         HotelName: "",
@@ -26,6 +27,7 @@ function Reserv(props) {
     }
 
     function SendDataToDataBase() {
+        setModal1(true)
         fetch('http://localhost:3000/Reservs', {
             method: 'POST',
             headers: {
@@ -47,12 +49,16 @@ function Reserv(props) {
                     Time: ''
                 });
                 setModal(false);
+                setTimeout(()=>{
+                    setModal1(false)
+                },1000)
                 // navigate('/')
                 toast.success('Successfully Added to DataBase!')
                 setTimeout(() => {
                     GetReservsFromDataBase();
                     window.location.reload()
                 },2000)
+
             })
             .catch(error => {
                 toast.error('Failed to add reservation: ' + error.message);
@@ -108,7 +114,14 @@ function Reserv(props) {
                     })
                 }
             </div>
-
+            {modal1 &&
+                <div className="loadingAnimation">
+                    <div className="Alltriangle">
+                        <div className="triangle1"></div>
+                        <div className="triangle2"></div>
+                        <div className="triangle3"></div>
+                    </div>
+                </div>}
         </>
     )
     //http://localhost:3000/Reservs

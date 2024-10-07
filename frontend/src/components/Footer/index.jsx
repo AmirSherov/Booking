@@ -2,6 +2,7 @@ import "./style.scss";
 import { Link } from "react-router-dom";
 import { FcAbout } from "react-icons/fc";
 import { IoIosContact } from "react-icons/io";
+import { TbBrandBooking } from "react-icons/tb";
 import { AiOutlineProduct } from "react-icons/ai";
 import { MdSaveAs } from "react-icons/md";
 
@@ -10,10 +11,10 @@ function Footer(props) {
     "marginTop": props.title
   }
   return (
-    <footer style={marginTop}>
+    <footer className="footer" style={marginTop}>
      
 
-      <h1><Link className="footerLogo" to={"/"} >Booking</Link></h1>
+      <h1><Link className="footerLogo" to={"/"} ><TbBrandBooking />Booking</Link></h1>
 
       <div className="info">
         <h3>Contact Info</h3>

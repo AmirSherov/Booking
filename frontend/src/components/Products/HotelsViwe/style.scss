@@ -1,19 +1,6 @@
 @use "../../../assets/styles/resets";
 @import "../../../assets/styles/setting";
 
-.HotelViweMainContainer {
-    img:hover{
-        padding: 10px;
-    }
-    width: 100%;
-    padding: 30px;
-    background-color: #333;
-    color: $light;
-    margin-top: 50px;
-    margin-bottom: 80px;
-
-}
-
 .ViweText {
     font-size: 45px;
     text-align: center;
@@ -21,7 +8,21 @@
     margin-top: 50px;
 }
 
+.HotelViweMainContainer {
+    width: 100%;
+    padding: 30px;
+    background-color: rgb(48, 1, 48);
+    color: $light;
+    margin-top: 50px;
+    margin-bottom: 80px;
+    height: 600px;
+    position: relative;
+}
+
 .HotelProductsDiv {
+    @include flex(row, center, center, 50px);
+    margin: 20px;
+
     .photo {
         width: 1500px;
         height: 500px;
@@ -31,7 +32,8 @@
             border-radius: 5px;
             height: 100%;
         }
-        img:hover{
+
+        img:hover {
             border-radius: 10px;
         }
     }
@@ -39,30 +41,137 @@
     .text {
         width: 100%;
         height: 100%;
-        font-size: 25px;
+        font-size: 23px;
     }
-
-    @include flex(row, center, center, 50px)
 }
-.HotelRoomDiv{
-    margin-top: 40px;
-    @include flex(row, center , center , 50px);
-    width: 100%;
-    .photo{
-        img:hover{
-            padding: 10px;
-            border-radius: 10px;
-        }
-        width: 1500px;
-        height: 500px;
-        img{
-            width: 100%;
-            height: 100%;
-            border-radius: 5px;
+@media (max-width:1280px) {
+    .HotelProductsDiv {
+        .text {
+            font-size: 19px;
         }
     }
-    .text{
-        font-size: 25px;
-        width: 100%;
+}
+
+@media (max-width:1150px) {
+    .HotelProductsDiv{
+        .photo{
+            position: relative;
+            width: 900px;
+            height: 500px;
+        }
+    }
+}
+@media (max-width:1100px) {
+    .HotelViweMainContainer{
+    height: 750px;
+    }
+    .HotelProductsDiv{
+        .photo{
+            position: relative;
+            left: 3%;
+            width: 800px;
+            height: 500px;
+        }
+        .text{
+            font-size: 17px;
+            position: absolute;
+            padding: 20px;
+            top: 78%;
+        }
+    }
+}
+@media (max-width:1000px) {
+    .HotelViweMainContainer{
+    height: 700px;
+    }
+    .HotelProductsDiv{
+        .photo{
+            position: relative;
+            left: 0;
+            width: 700px;
+            height: 400px;
+        }
+        .text{
+            font-size: 16px;
+            position: absolute;
+            padding: 15px;
+            top: 73%;
+        }
+    }
+}
+@media (max-width:754px) {
+    .HotelViweMainContainer{
+    height: 650px;
+    }
+    .HotelProductsDiv{
+        .photo{
+            position: relative;
+            left: 0;
+            width: 500px;
+            height: 330px;
+        }
+        .text{
+            font-size: 16px;
+            position: absolute;
+            padding: 14px;
+            top: 60%;
+        }
+    }
+}
+@media (max-width:540px) {
+    .HotelViweMainContainer{
+    height: 500px;
+    }
+    .HotelProductsDiv{
+        .photo{
+            position: relative;
+            top: 10px;
+            width: 350px;
+            height: 250px;
+        }
+        .text{
+            font-size: 13px;
+            position: absolute;
+            padding: 20px;
+            top: 59%;
+        }
+    }
+}
+@media (max-width:410px) {
+    .HotelViweMainContainer{
+    height: 450px;
+    }
+    .HotelProductsDiv{
+        .photo{
+            position: relative;
+            left: 3%;
+            width: 300px;
+            height: 200px;
+        }
+        .text{
+            font-size: 12px;
+            position: absolute;
+            padding: 20px;
+            top: 56%;
+        }
+    }
+}
+@media (max-width:300px) {
+    .HotelViweMainContainer{
+    height: 300px;
+    padding: 0;
+    }
+    .HotelProductsDiv{
+        .photo{
+            position: relative;
+            width: 300px;
+            height:150px;
+        }
+        .text{
+            font-size: 10px;
+            position: absolute;
+            padding: 20px;
+            top: 47%;
+        }
     }
 }

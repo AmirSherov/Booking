@@ -30,3 +30,25 @@ $black: #111;
     gap: $gap;
 }
 // ======================================================================
+@mixin darken_bg_on_hover($color, $percent: 20%) {
+    position: relative;
+    z-index: 1;
+
+    &::before {
+        content: "";
+        transition: 0.2s linear;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 100%;
+        z-index: 0;
+        background: darken($color, $percent);
+    }
+
+    &:hover::before {
+        z-index: -1;
+        left: 0;
+        right: 0;
+    }
+}

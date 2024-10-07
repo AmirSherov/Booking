@@ -2,7 +2,7 @@ import "./style.scss";
 import { useState, useEffect } from 'react';
 import ProductCards from "../Products/ProductsCards/index.jsx";
 import HotelViwe from "../Products/HotelsViwe/index.jsx";
-
+import HotelReserv from "./HotelReserv/index.jsx";
 function AboutUs() {
     const [style, setStyle] = useState(0);
 
@@ -13,6 +13,9 @@ function AboutUs() {
                 setStyle(1);
             } else {
                 setStyle(0);
+            }
+            if(top > 2500){
+
             }
         };
         window.addEventListener('scroll', handleScroll);
@@ -27,6 +30,9 @@ function AboutUs() {
                 <HotelViwe />
                 <div style={{ opacity: style, transition: 'opacity 0.9s' }} className="ProductsCardWrapper">
                 <ProductCards />
+                </div>
+                <div className="HotelReserv">
+                <HotelReserv/>
                 </div>
             </div>
         </>

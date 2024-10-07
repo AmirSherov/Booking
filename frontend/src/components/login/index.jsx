@@ -16,16 +16,16 @@ function Login(props) {
         try {
             const response = await fetch('http://localhost:3000/Users');
             const users = await response.json();
-
             const user = users.find(user => user.Email === email && user.Password === password);
 
             if (user) {
                 toast.success('Successfully logged in!');
-                sendEmail(email)
+                // sendEmail(email)
                 setTimeout(() => {
                     setEmail('')
                     setPassword('')
-                    navigate('/')
+                    navigate('/') 
+                    localStorage.setItem('Email', email)
                 }, 1000)
             } else {
                 toast.error('Invalid email or password');
@@ -34,9 +34,9 @@ function Login(props) {
             toast.error('An error occurred: ' + error.message);
         }
     }
-    function sendEmail(email) {
-        dispatch({ type: "setEmail", payload: email })
-    }
+    // function sendEmail(email) {
+    //     dispatch({ type: "setEmail", payload: email })
+    // }
     return (
         <form className="LoginContainer" onSubmit={handleLogin}>
             <ToastContainer />

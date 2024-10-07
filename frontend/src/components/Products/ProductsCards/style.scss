@@ -1,6 +1,69 @@
-.ProductsCardsMainDiv{
+.ProductsCardsMainDiv {
     display: flex;
     gap: 40px;
     justify-content: center;
+    position: relative;
     align-items: center;
+
+    @media (max-width:980px) {
+        gap: 20px;
+    }
+
+    @media (max-width:866px) {
+        height: 800px;
+
+        span:nth-child(3) {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+        }
+
+        span:nth-child(1) {
+            position: absolute;
+            top: 0%;
+            left: 10%;
+        }
+
+        span:nth-child(2) {
+            position: absolute;
+            top: 0%;
+            left: 50%;
+        }
+
+        @media (max-width:700px) {
+            height: 1100px;
+
+            span:nth-child(2) {
+                position: absolute;
+                top: 30%;
+                left: 30%;
+            }
+
+            span:nth-child(1) {
+                left: 30%;
+                top: -5%;
+            }
+
+            span:nth-child(3) {
+                position: absolute;
+                top: 65%;
+                left: 30%;
+            }
+        }
+
+        @media (max-width:500px) {
+            span:nth-child(1){
+                position: absolute;
+                left: 10%;
+            }
+            span:nth-child(2){
+                position: absolute;
+                left: 10%;
+            }
+            span:nth-child(3){
+                position: absolute;
+                left: 10%;
+            }
+        }
+    }
 }

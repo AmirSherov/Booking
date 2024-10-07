@@ -1,11 +1,14 @@
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./style.scss";
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 function Registration(props) {
     const [users, setUsers] = useState([]);
+    const [modal, setModal] = useState(false)
+    const navigate = useNavigate()
     const [info, setInfo] = useState({
         Email: '',
         Password: '',
@@ -28,7 +31,9 @@ function Registration(props) {
             });
             if (response.ok) {
                 toast.success('Successfully Registered');
+                setModal(false)
                 setInfo({ Email: '', Password: '', ConfirmPassword: '' });
+                getExistUsersFromDataBase()
             } else {
                 toast.error('Failed to register');
             }
@@ -37,6 +42,7 @@ function Registration(props) {
         } finally {
             setIsRegistering(false);
         }
+
     }
 
     async function getExistUsersFromDataBase() {
@@ -50,45 +56,58 @@ function Registration(props) {
     }
 
     async function checkInfo(e) {
-        await getExistUsersFromDataBase(); 
+        await getExistUsersFromDataBase();
 
         const { Password, ConfirmPassword, Email } = info;
 
-        const userExists = users.some(user => user.Email === Email);
+        const emailRegex = /^[a-zA-Z0-9]+@gmail\.com$/;
 
-        if (userExists) {
+        if (users.some(user => user.Email === Email)) {
             toast.error('The user already exists');
+        } else if (Password.length < 8) {
+            toast.error('Password length must be more than 8 characters');
         } else if (Password !== ConfirmPassword) {
             toast.error('Passwords do not match');
-        } else if (Password === '' || ConfirmPassword === '') {
+        } else if (!Password || !ConfirmPassword) {
             toast.error('Password fields cannot be empty');
-        } else if (!Email.includes('@gmail.com')) {
+        } else if (!emailRegex.test(Email)) {
             toast.error('Invalid email! Must be a Gmail address.');
         } else {
-            await sendInfoToDataBase(); 
+            await sendInfoToDataBase();
         }
     }
 
+
     return (
-        <div className="RegistrationWrapper">
-            <ToastContainer theme='dark' />
-            <div className="RegistrationInputWrapper">
-                <input value={info.Email} required onChange={setChangesLocal} className='email' name="Email" placeholder="Email" type="email" />
-                <input value={info.Password} required className='pass1' onChange={setChangesLocal} name='Password' placeholder="Password" type="password" />
-                <input value={info.ConfirmPassword} required className='pass2' onChange={setChangesLocal} name='ConfirmPassword' placeholder="Confirm Password" type="password" />
-                <button 
-                    onClick={checkInfo} 
-                    className="registrateBtn" 
-                    disabled={isRegistering} 
-                >
-                    {isRegistering ? 'Registering...' : 'Register'} 
-                </button>
-                <div className="linkWrapper">
-                    <span className="Link2">Already have an account?</span>
-                    <Link className="Linkto2" to={'/login'}>Log In!</Link>
+        <>
+            <div className="RegistrationWrapper">
+                <ToastContainer theme='dark' />
+                <div className="RegistrationInputWrapper">
+                    <input value={info.Email} required onChange={setChangesLocal} className='email' name="Email" placeholder="Email" type="email" />
+                    <input value={info.Password} required className='pass1' onChange={setChangesLocal} name='Password' placeholder="Password" type="password" />
+                    <input value={info.ConfirmPassword} required className='pass2' onChange={setChangesLocal} name='ConfirmPassword' placeholder="Confirm Password" type="password" />
+                    <button
+                        onClick={checkInfo}
+                        className="registrateBtn"
+                        disabled={isRegistering}
+                    >
+                        {isRegistering ? 'Registering...' : 'Register'}
+                    </button>
+                    <div className="linkWrapper">
+                        <span className="Link2">Already have an account?</span>
+                        <Link className="Linkto2" to={'/login'}>Log In!</Link>
+                    </div>
                 </div>
             </div>
-        </div>
+            {modal &&
+                <div className="loadingAnimation">
+                    <div className="Alltriangle">
+                        <div className="triangle1"></div>
+                        <div className="triangle2"></div>
+                        <div className="triangle3"></div>
+                    </div>
+                </div>}
+        </>
     );
 }
 

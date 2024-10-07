@@ -25,4 +25,8 @@
     .ProductsCardImgClass:hover {
         transform: scale(1.1);
     }
+    @media (max-width:980px) {
+        margin: 10px;
+        margin-bottom: 60px;
+    }
 }

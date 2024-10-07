@@ -20,18 +20,27 @@
     font-weight: 400;
     user-select: none;
 }
-h1, h2, h3, h4, h5, h6 {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 900;
 }
+
 a {
     text-decoration: none;
 }
+
 button {
     border: none;
     outline: none;
     cursor: pointer;
     padding: 10px;
 }
+
 input {
     border: none;
     outline: none;
@@ -71,5 +80,76 @@ input {
         .drp-content {
             display: block;
         }
+    }
+}
+
+.loadingAnimation {
+    background-color: rgba(0, 0, 0, 0.415);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000000;
+    backdrop-filter: blur(10px);
+    user-select: none;
+
+    .Alltriangle {
+        width: 220px;
+        height: 200px;
+        position: relative;
+        border-radius: 30%;
+        left: 44%;
+        top: 32%;
+        box-shadow: 10px 10px 10px 10px orange,
+            -10px -10px -10px 10px orange;
+        animation: loadingAnim linear 5s infinite;
+
+        .triangle1 {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            border-radius: 50%;
+            border: 10px solid rgba(0, 0, 0, 0.145);
+            position: absolute;
+            top: 52%;
+            left: 0;
+            box-shadow: 1px 1px 6px 1px orange;
+        }
+
+        .triangle2 {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            border-radius: 50%;
+            border: 10px solid rgba(0, 0, 0, 0.145);
+            outline: none;
+            position: absolute;
+            left: 26%;
+            box-shadow: 1px 1px 6px 1px orange;
+        }
+
+        .triangle3 {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            border-radius: 50%;
+            border: 10px solid rgba(0, 0, 0, 0.145);
+            outline: none;
+            position: absolute;
+            top: 52%;
+            right: 0;
+            box-shadow: 1px 1px 6px 1px orange;
+        }
+    }
+}
+
+@keyframes loadingAnim {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }
