@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
-import axios from 'axios'
 import './style.scss'
 function Reserv(props) {
     const [reservs, setReservs] = useState([])
@@ -49,15 +48,15 @@ function Reserv(props) {
                     Time: ''
                 });
                 setModal(false);
-                setTimeout(()=>{
+                setTimeout(() => {
                     setModal1(false)
-                },1000)
+                }, 1000)
                 // navigate('/')
                 toast.success('Successfully Added to DataBase!')
                 setTimeout(() => {
                     GetReservsFromDataBase();
                     window.location.reload()
-                },2000)
+                }, 2000)
 
             })
             .catch(error => {
@@ -85,13 +84,13 @@ function Reserv(props) {
                 <div className="modal-wrapper">
                     <div className="input-wrapper">
                         <label htmlFor="hotel">Hotel Name</label>
-                        <input placeholder='Hotel Name' name='HotelName' required onChange={setChangesToData}id='hotel' type="text" />
+                        <input placeholder='Hotel Name' name='HotelName' required onChange={setChangesToData} id='hotel' type="text" />
                         <label htmlFor="price">Price</label>
-                        <input placeholder='Price' name='Price' required onChange={setChangesToData}  id='price' type="number" />
+                        <input placeholder='Price' name='Price' required onChange={setChangesToData} id='price' type="number" />
                         <label htmlFor="date">Choose a date</label>
-                        <input placeholder='Date' name='Date' required onChange={setChangesToData}  id='date' type="date" />
+                        <input placeholder='Date' name='Date' required onChange={setChangesToData} id='date' type="date" />
                         <label htmlFor="time">Choose a time</label>
-                        <input placeholder='Time' name='Time' required onChange={setChangesToData}  id='time' type="time" />
+                        <input placeholder='Time' name='Time' required onChange={setChangesToData} id='time' type="time" />
                         <button onClick={SendDataToDataBase}>Submit</button>
                     </div>
                 </div>
