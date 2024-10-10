@@ -75,7 +75,6 @@ function Nav(props) {
                                 <div></div>
                             </div>
                         </div>
-                        <div className="links-wrapper">
                             <div className="links">
                                 <Link className={`navigationLink ${activeLink === "/" ? "active" : ""}`} onClick={() => setActiveClass('/')} to="/"> <AiOutlineProduct />Products</Link>
                                 <Link className={`navigationLink ${activeLink === "/Contact" ? "active" : ""}`} onClick={() => setActiveClass('/Contact')} to="reservs"><MdSaveAs />Reservations</Link>
@@ -121,7 +120,6 @@ function Nav(props) {
                             </div>
                         </div>
                     </div>
-                </div>
                 <div className="animation">
                     <div className="lineVis">
                         <div className="line"></div>

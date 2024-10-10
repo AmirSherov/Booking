@@ -1,6 +1,8 @@
 @use "../../../assets/styles/resets";
 @import "../../../assets/styles/_setting.scss";
-
+*{
+    outline: 1px solid red;
+}
 nav {
     user-select: none;
 
@@ -57,9 +59,8 @@ nav {
         }
 
         .right {
-            width: 100px;
                 position: relative;
-            @include flex(row, center, space-between, 20px);
+            @include flex(row, center, space-between, 5px);
             .links {
                 text-align: center;
 
@@ -109,9 +110,8 @@ nav {
     @media(max-width : 923px) {
         .bottom {
             padding: 10px 50px;
-            @include grid($gap: 100px);
-            grid-template-columns: 120px 1fr;
-
+            @include grid($gap: 10px);
+            grid-template-columns: 100px 1fr;
             .left {
                 h1.logo {
                     font-size: 30px;
@@ -140,9 +140,6 @@ nav {
                     font-weight: 900;
                 }
             }
-            .right .links{
-                display: none;
-            }
         }
 
     }
@@ -152,7 +149,7 @@ nav {
     position: relative;
     height: 40px;
     margin-right: 20px;
-    left: 100%;
+    left: 20%;
     justify-content: end;
     align-items: end;
     width: 60px;
