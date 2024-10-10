@@ -1,8 +1,6 @@
 @use "../../../assets/styles/resets";
 @import "../../../assets/styles/_setting.scss";
-*{
-    outline: 1px solid red;
-}
+
 nav {
     user-select: none;
 
@@ -149,7 +147,7 @@ nav {
     position: relative;
     height: 40px;
     margin-right: 20px;
-    left: 20%;
+    left: 70%;
     justify-content: end;
     align-items: end;
     width: 60px;
