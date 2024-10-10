@@ -39,7 +39,7 @@ function Footer(props) {
       <div className="Pages">
         <h2>Pages</h2>
         <p><Link className="linksNav" to={"/"}><AiOutlineProduct />Products</Link></p>
-        <p><Link className="linksNav" to={"reserv"}><MdSaveAs />Reservations</Link></p>
+        <p><Link className="linksNav" to={"reservs"}><MdSaveAs />Reservations</Link></p>
         <p><Link className="linksNav" to={"login"}><IoIosContact />Login</Link></p>
       </div>
       <div className="items">

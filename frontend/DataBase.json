@@ -1,25 +1,11 @@
 {
   "Reservs": [
     {
-      "id": 1728549731492,
-      "HotelName": "San Tiego",
-      "Date": "23.09.2004",
-      "Price": 300,
-      "Time": "23:00"
-    },
-    {
-      "id": 1728549734875,
-      "HotelName": "San Francisco",
-      "Date": "26.03.2025",
-      "Price": 500,
-      "Time": "17:30"
-    },
-    {
-      "id": 1728549768114,
-      "HotelName": "shoxa",
-      "Date": "9999-09-20",
-      "Price": "100",
-      "Time": "23:00"
+      "id": 1728576786669,
+      "HotelName": "aaa",
+      "Date": "0003-02-23",
+      "Price": "223323",
+      "Time": "23:23"
     }
   ],
   "Users": [
@@ -41,7 +27,7 @@
       "ConfirmPassword": "123456789"
     },
     {
-      "id": 1728549809655,
+      "id": "1728549809655",
       "Email": "shoxa@gmail.com",
       "Password": "12345678",
       "ConfirmPassword": "12345678"
