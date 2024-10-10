@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "json-server --watch DataBase.json"
   },
   "dependencies": {
     "install": "^0.13.0",
