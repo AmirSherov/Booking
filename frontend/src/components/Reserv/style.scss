@@ -148,8 +148,9 @@
         button {
             color: $light;
             background-color: $violet;
-            width: 80px;
-            height: 30px;
+            width: 100px;
+            height: 40px;
+            @include darken_bg_on_hover(rgb(0, 0, 137), 5%);
         }
 
         input {
@@ -321,6 +322,7 @@
                 position: absolute;
                 top: 100px;
                 left: -50px;
+                
             }
             .time{
                 position: absolute;
@@ -328,5 +330,22 @@
                 right:5px;
             }
         }
+    }
+}
+@media (max-width:720px) {
+    .modal-wrapper{
+        width: 80%;
+        left: 10%;
+    }
+}
+@media (max-width:400px) {
+    .modal-wrapper{
+        width: 100%;
+        left: 0;
+       .input-wrapper{
+        input{
+            width: 70%;
+        }
+       }
     }
 }
