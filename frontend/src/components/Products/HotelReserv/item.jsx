@@ -17,7 +17,7 @@ function HotelReservItem(props) {
             const data = await response.json();
             setExistReservs(data);
         } catch (error) {
-            toast.error('Failed to load existing reservations: ' + error.message);
+           console.log("Failed to fetch reservs " + error.message)
         }
     };
 

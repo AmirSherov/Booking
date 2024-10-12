@@ -51,7 +51,6 @@ function Reserv(props) {
                 setTimeout(() => {
                     setModal1(false)
                 }, 1000)
-                // navigate('/')
                 toast.success('Successfully Added to DataBase!')
                 setTimeout(() => {
                     GetReservsFromDataBase();
@@ -60,7 +59,7 @@ function Reserv(props) {
 
             })
             .catch(error => {
-                toast.error('Failed to add reservation: ' + error.message);
+                console.log('Failed to fetch reservs' + error.message)
             });
     };
     function changeModal(e) {
@@ -96,6 +95,14 @@ function Reserv(props) {
                 </div>
             }
             <div className="reservs-wrapper">
+            <ReservationItem
+                                    id={1728233340976}
+                                    time={"23:00"}
+                                    price={15}
+                                    hotel={"San Tiego"}
+                                    date={"2004.09.09"}
+
+                                />
                 {
                     reservs.map((product, index) => {
                         return (

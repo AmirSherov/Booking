@@ -37,7 +37,7 @@
         flex-direction: column;
 
         input {
-            width: 80%;
+            width: 40%;
             height: 60px;
             background-color: $light;
             border: 1px solid #333;
@@ -60,7 +60,7 @@
         }
 
         button {
-            width: 80%;
+            width: 40%;
             height: 60px;
             background-color: #333;
             font-size: 30px;
@@ -82,4 +82,16 @@
             }
         }
     }
+    @media (max-width:600px) {
+        .inputWrapper {
+            input {
+                width: 80%;
+            }
+            button{
+                width: 80%;
+            }
+        }
+        
 }
+}
+
