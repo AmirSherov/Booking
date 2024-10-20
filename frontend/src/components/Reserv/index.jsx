@@ -32,7 +32,10 @@ function Reserv(props) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ ...newReserv, id: Date.now() })
+            body: JSON.stringify({ 
+                ...newReserv, 
+                id: Date.now().toString() 
+            })
         })
             .then(response => {
                 if (!response.ok) {
@@ -95,25 +98,24 @@ function Reserv(props) {
                 </div>
             }
             <div className="reservs-wrapper">
-            <ReservationItem
-                                    id={1728233340976}
-                                    time={"23:00"}
-                                    price={15}
-                                    hotel={"San Tiego"}
-                                    date={"2004.09.09"}
+                <ReservationItem
+                    id={1728233340976}
+                    time={"23:00"}
+                    price={15}
+                    hotel={"San Tiego"}
+                    date={"2004.09.09"}
 
-                                />
+                />
                 {
                     reservs.map((product, index) => {
                         return (
-                            <div key={product.id}>
+                            <div key={index}>
                                 <ReservationItem
                                     id={product.id}
                                     time={product.Time}
                                     price={product.Price}
                                     hotel={product.HotelName}
                                     date={product.Date}
-
                                 />
                             </div>
                         )

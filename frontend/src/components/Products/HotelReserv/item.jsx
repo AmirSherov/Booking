@@ -24,18 +24,16 @@ function HotelReservItem(props) {
 
     const SendDataToDataBase = async () => {
         try {
-            const response = await fetch('http://localhost:3000/Reservs', {
+            fetch('http://localhost:3000/Reservs', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ ...newReserv, id: Date.now() })
-            });
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-
+                body: JSON.stringify({ 
+                    ...newReserv, 
+                    id: Date.now().toString() 
+                })
+            })
             toast.success('Successfully Added to DataBase!');
             GetReservsFromDataBase()
         } catch (error) {
@@ -46,7 +44,7 @@ function HotelReservItem(props) {
     const checkDataBase = async () => {
         await GetReservsFromDataBase(); 
 
-        const hotelExists = existReservs.some(reserv => reserv.HotelName === newReserv.HotelName);
+        const hotelExists = existReservs.find(reserv => reserv.id === newReserv.id);
 
         if (hotelExists) {
             toast.error('Reservation for this hotel already exists.');

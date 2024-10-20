@@ -5,24 +5,6 @@
       "id": "1727987540947",
       "Email": "Amir@gmail.com",
       "Password": "123456789"
-    },
-    {
-      "id": "1728229403871",
-      "Email": "test@gmail.com",
-      "Password": "12345678",
-      "ConfirmPassword": "12345678"
-    },
-    {
-      "id": "1728296082129",
-      "Email": "test@gmail.com",
-      "Password": "123456789",
-      "ConfirmPassword": "123456789"
-    },
-    {
-      "id": "1728549809655",
-      "Email": "shoxa@gmail.com",
-      "Password": "12345678",
-      "ConfirmPassword": "12345678"
     }
   ]
 }

@@ -12,7 +12,8 @@ function Login(props) {
     const navigate = useNavigate()
     async function handleLogin(e) {
         e.preventDefault();
-
+        const emailinput = document.querySelector(".email");
+        const passinput = document.querySelector(".pass");
         try {
             const response = await fetch('http://localhost:3000/Users');
             const users = await response.json();
@@ -20,7 +21,6 @@ function Login(props) {
 
             if (user) {
                 toast.success('Successfully logged in!');
-                // sendEmail(email)
                 setTimeout(() => {
                     setEmail('')
                     setPassword('')
@@ -29,14 +29,17 @@ function Login(props) {
                 }, 1000)
             } else {
                 toast.error('Invalid email or password');
+                emailinput.style.boxShadow = "0 0 15px 10px rgba(255, 0, 0, 0.8)";
+                passinput.style.boxShadow = "0 0 15px 10px rgba(255, 0, 0, 0.8)";
+                setTimeout(() => {
+                    emailinput.style.boxShadow = "none";
+                    passinput.style.boxShadow = "none";
+                }, 5500);
             }
         } catch (error) {
             toast.error('An error occurred: ' + error.message);
         }
     }
-    // function sendEmail(email) {
-    //     dispatch({ type: "setEmail", payload: email })
-    // }
     return (
         <form className="LoginContainer" onSubmit={handleLogin}>
             <ToastContainer />
@@ -46,11 +49,13 @@ function Login(props) {
                     required
                     type="email"
                     value={email}
+                    className="email"
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
                     placeholder="Password"
                     required
+                    className="pass"
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}

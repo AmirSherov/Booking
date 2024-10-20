@@ -34,18 +34,17 @@
             background-color: $light;
             border: 1px solid #333;
             font-size: 30px;
+            border-radius: 5px;
             outline: none;
             &:focus {
                 outline: none;
                 box-shadow: 0 0 15px 10px rgba(255, 140, 0, 0.8);
                 padding: 5px;
-            }
-            &:focus {
-                transform: scale(1.1);
+                transform: scale(1.040);
             }
 
             &:hover {
-                transform: scale(0.9);
+                transform: scale(0.96);
             }
             &::placeholder {
                 color: black;
