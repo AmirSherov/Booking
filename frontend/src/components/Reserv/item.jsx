@@ -64,6 +64,7 @@ function ReservItem({ hotel, id, price, date, time }) {
                     <button onClick={checkAndDeleteReserv}>Delete</button>
                 </div>
             </div>
+        
         </>
     );
 }

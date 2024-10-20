@@ -14,7 +14,7 @@ function AboutUs() {
             } else {
                 setStyle(0);
             }
-            if(top > 2500){
+            if (top > 2500) {
 
             }
         };
@@ -29,10 +29,10 @@ function AboutUs() {
             <div className="aboutMainContainer">
                 <HotelViwe />
                 <div style={{ opacity: style, transition: 'opacity 0.9s' }} className="ProductsCardWrapper">
-                <ProductCards />
+                    <ProductCards />
                 </div>
                 <div className="HotelReserv">
-                <HotelReserv/>
+                    <HotelReserv />
                 </div>
             </div>
         </>

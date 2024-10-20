@@ -9,6 +9,7 @@ function Login(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { state, dispatch } = useContext(context)
+    const [ isRegistering, setIsRegistering ] = useState(false);
     const navigate = useNavigate()
     async function handleLogin(e) {
         e.preventDefault();
@@ -20,11 +21,15 @@ function Login(props) {
             const user = users.find(user => user.Email === email && user.Password === password);
 
             if (user) {
-                toast.success('Successfully logged in!');
+                setIsRegistering(true)
+                setTimeout(() => {
+                    toast.success('Successfully logged in!');
+                    setIsRegistering(false)
+                },2000)
                 setTimeout(() => {
                     setEmail('')
                     setPassword('')
-                    navigate('/') 
+                    navigate('/')
                     localStorage.setItem('Email', email)
                 }, 1000)
             } else {
@@ -34,39 +39,59 @@ function Login(props) {
                 setTimeout(() => {
                     emailinput.style.boxShadow = "none";
                     passinput.style.boxShadow = "none";
-                }, 5500);
+                }, 2000);
             }
         } catch (error) {
             toast.error('An error occurred: ' + error.message);
         }
     }
     return (
-        <form className="LoginContainer" onSubmit={handleLogin}>
-            <ToastContainer />
-            <div className="inputWrapper">
-                <input
-                    placeholder="Email"
-                    required
-                    type="email"
-                    value={email}
-                    className="email"
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    placeholder="Password"
-                    required
-                    className="pass"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button className="confirm">Login</button>
-                <div className="LinkWrapper">
-                    <span className="Link">Don't have an account?</span>
-                    <Link className="Linkto" to={"/registration"}>Create It!</Link>
+        <>
+            <form className="LoginContainer" onSubmit={handleLogin}>
+                <ToastContainer />
+                <div className="inputWrapper">
+                    <input
+                        placeholder="Email"
+                        required
+                        type="email"
+                        value={email}
+                        className="email"
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <input
+                        placeholder="Password"
+                        required
+                        className="pass"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <button className="confirm">Login</button>
+                    <div className="LinkWrapper">
+                        <span className="Link">Don't have an account?</span>
+                        <Link className="Linkto" to={"/registration"}>Create It!</Link>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+            {isRegistering && (
+                <div className="loading">
+                    <div class="lds-spinner">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            )}
+        </>
     );
 }
 

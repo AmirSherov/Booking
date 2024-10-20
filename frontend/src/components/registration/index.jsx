@@ -32,7 +32,6 @@ function Registration(props) {
                 body: JSON.stringify({ ...info, id: Date.now().toString() })
             });
             if (response.ok) {
-                toast.success('Successfully Registered');
                 setInfo({ Email: '', Password: '', ConfirmPassword: '' });
                 getExistUsersFromDataBase();
             } else {
@@ -43,7 +42,9 @@ function Registration(props) {
         } finally {
             setTimeout(() => {
                 setIsRegistering(false);
-            }, 1000);
+                toast.success('Successfully Registered');
+            }, 2000);
+            
         }
     }
 
@@ -130,12 +131,21 @@ function Registration(props) {
                 </div>
             </div>
             {isRegistering && (
-                <div className="loadingAnimation">
-                    <div className="Alltriangle">
-                        <div className="triangle1"></div>
-                        <div className="triangle2"></div>
-                        <div className="triangle3"></div>
-                    </div>
+                <div className="loading">
+                    <div class="lds-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                </div>
                 </div>
             )}
         </>

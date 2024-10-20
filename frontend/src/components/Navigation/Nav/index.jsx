@@ -33,7 +33,7 @@ function Nav(props) {
         }
         getEmail()
     }, [])
-  
+
     useEffect(() => {
         const InputCheck = document.getElementById('burger-toggle');
         const Links = document.querySelector('.links-wrapper1')
@@ -75,51 +75,51 @@ function Nav(props) {
                                 <div></div>
                             </div>
                         </div>
-                            <div className="links">
-                                <Link className={`navigationLink ${activeLink === "/" ? "active" : ""}`} onClick={() => setActiveClass('/')} to="/"> <AiOutlineProduct />Products</Link>
-                                <Link className={`navigationLink ${activeLink === "/Contact" ? "active" : ""}`} onClick={() => setActiveClass('/Contact')} to="reservs"><MdSaveAs />Reservations</Link>
-                                <span>
-                                    {log ? (
-                                        <Link className={`navigationLink ${activeLink === "/Login" ? "active" : ""}`} onClick={() => {
-                                            setModal(true)
-                                            setTimeout(() => {
-                                                setModal(false)
-                                            }, 2000)
-                                            setTimeout(() => {
-                                                Swal.fire({
-                                                    title: "Are you sure?",
-                                                    text: "Do you want to log out from Accaunt?",
-                                                    icon: "warning",
-                                                    showCancelButton: true,
-                                                    confirmButtonColor: "#3085d6",
-                                                    cancelButtonColor: "#d33",
-                                                    confirmButtonText: "Log out!"
-                                                }).then((result) => {
-                                                    if (result.isConfirmed) {
-                                                        setModal(true)
-                                                        setTimeout(() => {
-                                                            setModal(false)
-                                                        }, 1000)
-                                                        setTimeout(() => {
-                                                            Swal.fire({
-                                                                title: "Logged Out!!",
-                                                                text: "You logged out from Accaunt",
-                                                                icon: "success"
-                                                            });
-                                                        }, 1200)
-                                                        localStorage.removeItem('Email'), setLog(!log)
-                                                    }
-                                                });
-                                            }, 2200)
+                        <div className="links">
+                            <Link className={`navigationLink ${activeLink === "/" ? "active" : ""}`} onClick={() => setActiveClass('/')} to="/"> <AiOutlineProduct />Products</Link>
+                            <Link className={`navigationLink ${activeLink === "/Contact" ? "active" : ""}`} onClick={() => setActiveClass('/Contact')} to="reservs"><MdSaveAs />Reservations</Link>
+                            <span>
+                                {log ? (
+                                    <Link className={`navigationLink ${activeLink === "/Login" ? "active" : ""}`} onClick={() => {
+                                        setModal(true)
+                                        setTimeout(() => {
+                                            setModal(false)
+                                        }, 2000)
+                                        setTimeout(() => {
+                                            Swal.fire({
+                                                title: "Are you sure?",
+                                                text: "Do you want to log out from Accaunt?",
+                                                icon: "warning",
+                                                showCancelButton: true,
+                                                confirmButtonColor: "#3085d6",
+                                                cancelButtonColor: "#d33",
+                                                confirmButtonText: "Log out!"
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    setModal(true)
+                                                    setTimeout(() => {
+                                                        setModal(false)
+                                                    }, 1000)
+                                                    setTimeout(() => {
+                                                        Swal.fire({
+                                                            title: "Logged Out!!",
+                                                            text: "You logged out from Accaunt",
+                                                            icon: "success"
+                                                        });
+                                                    }, 1200)
+                                                    localStorage.removeItem('Email'), setLog(!log)
+                                                }
+                                            });
+                                        }, 2200)
 
-                                        }} ><IoMdLogOut />Log Out {email}</Link>
-                                    ) : (
-                                        <Link className={`navigationLink ${activeLink === "/Login" ? "active" : ""}`} onClick={() => setActiveClass('/Login')} to="login" ><IoMdLogOut />Login</Link>
-                                    )}
-                                </span>
-                            </div>
+                                    }} ><IoMdLogOut />Log Out {email}</Link>
+                                ) : (
+                                    <Link className={`navigationLink ${activeLink === "/Login" ? "active" : ""}`} onClick={() => setActiveClass('/Login')} to="login" ><IoMdLogOut />Login</Link>
+                                )}
+                            </span>
                         </div>
                     </div>
+                </div>
                 <div className="animation">
                     <div className="lineVis">
                         <div className="line"></div>
@@ -128,58 +128,68 @@ function Nav(props) {
             </nav>
 
             {modal &&
-                <div className="loadingAnimation">
-                    <div className="Alltriangle">
-                        <div className="triangle1"></div>
-                        <div className="triangle2"></div>
-                        <div className="triangle3"></div>
+                <div className="loading">
+                    <div class="lds-spinner">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
                     </div>
-                </div>}
-                <div className="links-wrapper1">
-                            <div className="links1">
-                                <span><Link className={`navigationLink ${activeLink === "/" ? "active" : ""}`} onClick={() => setActiveClass('/')} to="/"> <AiOutlineProduct />Products</Link></span>
-                                <span><Link className={`navigationLink ${activeLink === "/Contact" ? "active" : ""}`} onClick={() => setActiveClass('/Contact')} to="reservs"><MdSaveAs />Reservations</Link></span>
-                                <span>
-                                    {log ? (
-                                        <Link className={`navigationLink ${activeLink === "/Login" ? "active" : ""}`} onClick={() => {
+                </div>
+            }
+            <div className="links-wrapper1">
+                <div className="links1">
+                    <span><Link className={`navigationLink ${activeLink === "/" ? "active" : ""}`} onClick={() => setActiveClass('/')} to="/"> <AiOutlineProduct />Products</Link></span>
+                    <span><Link className={`navigationLink ${activeLink === "/Contact" ? "active" : ""}`} onClick={() => setActiveClass('/Contact')} to="reservs"><MdSaveAs />Reservations</Link></span>
+                    <span>
+                        {log ? (
+                            <Link className={`navigationLink ${activeLink === "/Login" ? "active" : ""}`} onClick={() => {
+                                setModal(true)
+                                setTimeout(() => {
+                                    setModal(false)
+                                }, 2000)
+                                setTimeout(() => {
+                                    Swal.fire({
+                                        title: "Are you sure?",
+                                        text: "Do you want to log out from Accaunt?",
+                                        icon: "warning",
+                                        showCancelButton: true,
+                                        confirmButtonColor: "#3085d6",
+                                        cancelButtonColor: "#d33",
+                                        confirmButtonText: "Log out!"
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
                                             setModal(true)
                                             setTimeout(() => {
                                                 setModal(false)
-                                            }, 2000)
+                                            }, 1000)
                                             setTimeout(() => {
                                                 Swal.fire({
-                                                    title: "Are you sure?",
-                                                    text: "Do you want to log out from Accaunt?",
-                                                    icon: "warning",
-                                                    showCancelButton: true,
-                                                    confirmButtonColor: "#3085d6",
-                                                    cancelButtonColor: "#d33",
-                                                    confirmButtonText: "Log out!"
-                                                }).then((result) => {
-                                                    if (result.isConfirmed) {
-                                                        setModal(true)
-                                                        setTimeout(() => {
-                                                            setModal(false)
-                                                        }, 1000)
-                                                        setTimeout(() => {
-                                                            Swal.fire({
-                                                                title: "Logged Out!!",
-                                                                text: "You logged out from Accaunt",
-                                                                icon: "success"
-                                                            });
-                                                        }, 1200)
-                                                        localStorage.removeItem('Email'), setLog(!log)
-                                                    }
+                                                    title: "Logged Out!!",
+                                                    text: "You logged out from Accaunt",
+                                                    icon: "success"
                                                 });
-                                            }, 2200)
+                                            }, 1200)
+                                            localStorage.removeItem('Email'), setLog(!log)
+                                        }
+                                    });
+                                }, 2200)
 
-                                        }} ><IoMdLogOut />Log Out {email}</Link>
-                                    ) : (
-                                        <Link className={`navigationLink ${activeLink === "/Login" ? "active" : ""}`} onClick={() => setActiveClass('/Login')} to="login" ><IoMdLogOut />Login</Link>
-                                    )}
-                                </span>
-                            </div>
-                        </div>
+                            }} ><IoMdLogOut />Log Out {email}</Link>
+                        ) : (
+                            <Link className={`navigationLink ${activeLink === "/Login" ? "active" : ""}`} onClick={() => setActiveClass('/Login')} to="login" ><IoMdLogOut />Login</Link>
+                        )}
+                    </span>
+                </div>
+            </div>
         </>
     )
 }
