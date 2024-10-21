@@ -18,7 +18,6 @@ function ReservItem({ hotel, id, price, date, time }) {
                 </div>
                 <div className="rightSide">
                     <Link to={`/Reserv/${id}`}><CiCircleInfo />More</Link>
-                    <div className="icon"><FaClock /></div>
                 </div>
             </div>
         

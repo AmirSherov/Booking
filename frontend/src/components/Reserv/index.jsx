@@ -139,6 +139,5 @@ function Reserv(props) {
                 </div>
             }</>
     )
-    //http://localhost:3000/Reservs
 }
 export default Reserv;

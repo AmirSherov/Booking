@@ -1,30 +1,29 @@
 @use '../../assets/styles/resets';
 @import '../../assets/styles/setting';
 
+
 .reserv-wrapper {
+    display: flex; 
+    justify-content: space-between; 
     width: 90%;
-    @include flex(row, $gap :990px);
-    height: 200px;
     padding: 50px;
     margin: 50px;
+    height: 250px;
     background-color: #333;
     border-radius: 8px;
-    outline: none;
-    border: none;
     color: white;
+
     .leftSide {
-        @include flex(column, $gap : 20px);
-        height: 100px;
+        display: flex; 
+        flex-direction: column;
+        gap: 20px; 
 
         .hotel {
             font-size: 45px;
             color: $violet;
         }
 
-        .id {
-            font-size: 20px;
-        }
-
+        .id,
         .price {
             font-size: 20px;
 
@@ -35,11 +34,9 @@
     }
 
     .rightSide {
-        @include flex(column, $gap : 10px);
-
-        .date {
-            font-size: 20px;
-        }
+        display: flex; 
+        flex-direction: column;
+        align-items: flex-end; 
 
         .icon {
             font-size: 30px;
@@ -48,372 +45,60 @@
                 animation: clock 2s linear;
             }
         }
-        a{
+
+        a {
             font-size: 30px;
             color: $light;
             text-decoration: underline;
             text-decoration-color: darkblue;
-            width: 150px;
-            &:hover{
+
+            &:hover {
                 color: $red;
                 text-decoration-color: $red;
             }
         }
     }
+}
 
-    @keyframes clock {
-        0% {
-            transform: rotate(0deg)
-        }
 
-        100% {
-            transform: rotate(360deg);
-        }
+@keyframes clock {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }
 
-.addReserv {
-    width: 100%;
-    height: 100px;
-    background-color: #1d1c1c;
-    color: $light;
-    margin-top: 40px;
-    position: relative;
-    @include flex(row, $gap: 1000px);
 
-    .text {
-        font-size: 60px;
-    }
-
-    .plus {
-        font-size: 50px;
-        background-color: lightgray;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
+@media (max-width: 1286px) {
+    .reserv-wrapper {
+        justify-content: center;
+        flex-direction: column; 
+        align-items: center; 
         text-align: center;
+    }
+}
+
+@media (max-width: 400px) {
+    .reserv-wrapper {
+        justify-content: center;
         align-items: center;
-        justify-items: center;
-        color: black;
-
-    }
-}
-
-@media (max-width:1286px) {
-    .addReserv {
-        .text {
-            position: absolute;
-            left: 10%;
-        }
-
-        .plus {
-            position: absolute;
-            left: 90%;
-        }
-    }
-}
-
-@media (max-width:626px) {
-    .addReserv {
-        height: 150px;
-
-        .text {
-            position: absolute;
-            top: 5%;
-            font-size: 40px;
-            left: 23%;
-        }
-
-        .plus {
-            position: absolute;
-            left: 50%;
-            top: 60%;
-        }
-    }
-}
-
-.modal-wrapper {
-    width: 50%;
-    height: 500px;
-    position: absolute;
-    z-index: 900;
-    background-color: rgb(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    color: $light;
-    left: 25%;
-    outline: none;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-
-    .modal-wrapper {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        backdrop-filter: blur(90px);
-        z-index: 901;
-    }
-
-    .input-wrapper {
-        width: 100%;
-        height: 100%;
-        @include flex(column, $gap : 10px);
-
-        button {
-            color: $light;
-            background-color: $violet;
-            width: 100px;
-            height: 40px;
-            @include darken_bg_on_hover(rgb(0, 0, 137), 5%,0px);
-        }
-
-        input {
-            width: 300px;
-            border-radius: 5px;
-            border: none;
-            outline: none;
-
-            &:focus {
-                padding: 20px;
-                color: $red;
-            }
-        }
-    }
-
-
-}
-
-@media (max-width:1286px) {
-    .reserv-wrapper {
-        position: relative;
+        margin: 10px 0 10px 10px;
+        text-align: center;
+        height: auto; 
+        padding: 20px; 
 
         .leftSide {
             .hotel {
-                position: absolute;
-                left: 5%;
-                top: 10%;
-                text-align: center;
+                font-size: 30px;
             }
 
-            .id {
-                position: absolute;
-                left: 5%;
-                top: 45%;
-                text-align: center;
-            }
-
+            .id,
             .price {
-                position: absolute;
-                left: 5%;
-                top: 70%;
-                text-align: center;
+                font-size: 16px; 
             }
         }
     }
 }
 
-@media (max-width:1180px) {
-    .reserv-wrapper {
-        width: 80%;
-        margin-right: 50px;
-    }
-
-    .rightSide {
-        position: absolute;
-        right: 20px;
-    }
-}
-
-@media (max-width:400px) {
-    .reserv-wrapper {
-        margin-right: 40px;
-        width: 80%;
-        padding: 0px;
-        height: 330px;
-
-        .rightSide {
-            position: absolute;
-            top: 55%;
-            right: 30%;
-        }
-
-        .leftSide {
-            .hotel {
-                top: 5%;
-                position: absolute;
-                right: 30px;
-                font-size: 27px;
-            }
-
-            .id {
-                top: 30%;
-                left: 22%;
-            }
-
-            .price {
-                top: 42%;
-                left: 22%;
-            }
-        }
-    }
-}
-
-@media (max-width:345px) {
-    .reserv-wrapper {
-        padding-right: 20px;
-        padding-left: 0px;
-        margin-right: 60px;
-        width: 70%;
-
-        .leftSide {
-            .hotel {
-                left: 10%;
-            }
-
-            .id {
-                top: 28%;
-                left: 16%;
-                font-size: 15px;
-            }
-
-            .price {
-                top: 40%;
-                font-size: 17px;
-                left: 15%;
-            }
-        }
-
-        .rightSide {
-            .date {
-                font-size: 16px;
-            }
-        }
-    }
-}
-
-@media (max-width:300px) {
-    .addReserv {
-        height: 150px;
-
-        .text {
-            position: absolute;
-            top: 5%;
-            font-size: 30px;
-            left: 10%;
-        }
-
-        .plus {
-            position: absolute;
-            left: 45%;
-            top: 60%;
-        }
-    }
-
-    .reserv-wrapper {
-        width: 60%;
-        padding: 0;
-
-        .leftSide {
-            .hotel {
-                position: absolute;
-                right: 30px;
-                font-size: 26px;
-            }
-
-            .id {
-                position: absolute;
-                left: 10%;
-                font-size: 14px;
-            }
-
-            .price {
-                position: absolute;
-                left: 10%;
-                font-size: 15px;
-            }
-        }
-
-        .rightSide {
-            .date {
-                font-size: 14px;
-            }
-        }
-    }
-}
-
-@media (max-width:228px) {
-    .reserv-wrapper {
-        width: 50%;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        margin-left: 40px;
-        margin-right: 0;
-
-        .leftSide {
-            .hotel {
-                left: 5%;
-            }
-        }
-
-        .rightSide {
-            .date {
-                position: absolute;
-                right: -20px;
-                width: 80px;
-            }
-
-            .icon {
-                position: absolute;
-                top: 55px;
-                right: 7px;
-            }
-
-            button {
-                position: absolute;
-                top: 100px;
-                left: -50px;
-
-            }
-
-            .time {
-                position: absolute;
-                top: 30px;
-                right: 5px;
-            }
-        }
-    }
-}
-
-
-@media (max-width:720px) {
-    .modal-wrapper {
-        width: 80%;
-        left: 10%;
-    }
-}
-
-@media (max-width:400px) {
-    .modal-wrapper {
-        width: 100%;
-        left: 0;
-
-        .input-wrapper {
-            input {
-                width: 70%;
-            }
-        }
-    }
-}
-
-@media (max-width:400px) {
-    .reserv-wrapper {
-        .leftSide {
-            .hotel {
-                top: 10px;
-                left: 40px;
-            }
-        }
-    }
-}
