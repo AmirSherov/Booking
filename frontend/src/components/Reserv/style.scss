@@ -48,6 +48,17 @@
                 animation: clock 2s linear;
             }
         }
+        a{
+            font-size: 30px;
+            color: $light;
+            text-decoration: underline;
+            text-decoration-color: darkblue;
+            width: 150px;
+            &:hover{
+                color: $red;
+                text-decoration-color: $red;
+            }
+        }
     }
 
     @keyframes clock {
@@ -155,7 +166,7 @@
             background-color: $violet;
             width: 100px;
             height: 40px;
-            @include darken_bg_on_hover(rgb(0, 0, 137), 5%);
+            @include darken_bg_on_hover(rgb(0, 0, 137), 5%,0px);
         }
 
         input {

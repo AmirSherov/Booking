@@ -64,7 +64,7 @@
         color: $red;
         transition: ease-in 0.1s;
         transition: ease-out 0.5s;
-        @include darken_bg_on_hover($red , 20%);
+        @include darken_bg_on_hover($red , 20% , 0px);
 
         &:hover {
             color: $light;

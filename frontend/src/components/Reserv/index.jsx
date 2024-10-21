@@ -32,9 +32,9 @@ function Reserv(props) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ 
-                ...newReserv, 
-                id: Date.now().toString() 
+            body: JSON.stringify({
+                ...newReserv,
+                id: Date.now().toString()
             })
         })
             .then(response => {
@@ -112,10 +112,8 @@ function Reserv(props) {
                             <div key={index}>
                                 <ReservationItem
                                     id={product.id}
-                                    time={product.Time}
                                     price={product.Price}
                                     hotel={product.HotelName}
-                                    date={product.Date}
                                 />
                             </div>
                         )
@@ -123,14 +121,23 @@ function Reserv(props) {
                 }
             </div>
             {modal1 &&
-                <div className="loadingAnimation">
-                    <div className="Alltriangle">
-                        <div className="triangle1"></div>
-                        <div className="triangle2"></div>
-                        <div className="triangle3"></div>
+                <div className="loading">
+                    <div class="lds-spinner">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
                     </div>
-                </div>}
-        </>
+                </div>
+            }</>
     )
     //http://localhost:3000/Reservs
 }

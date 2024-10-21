@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './style.scss';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 function HotelReservItem(props) {
     const [existReservs, setExistReservs] = useState([]);
@@ -17,14 +17,13 @@ function HotelReservItem(props) {
             const data = await response.json();
             setExistReservs(data);
         } catch (error) {
-           console.log("Failed to fetch reservs " + error.message)
+            console.log("Failed to fetch reservs " + error.message);
         }
     };
 
-
     const SendDataToDataBase = async () => {
         try {
-            fetch('http://localhost:3000/Reservs', {
+            await fetch('http://localhost:3000/Reservs', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -33,18 +32,18 @@ function HotelReservItem(props) {
                     ...newReserv, 
                     id: Date.now().toString() 
                 })
-            })
+            });
             toast.success('Successfully Added to DataBase!');
-            GetReservsFromDataBase()
+            GetReservsFromDataBase(); 
         } catch (error) {
             toast.error('Failed to add reservation: ' + error.message);
         }
     };
 
     const checkDataBase = async () => {
-        await GetReservsFromDataBase(); 
+        await GetReservsFromDataBase();  
 
-        const hotelExists = existReservs.find(reserv => reserv.id === newReserv.id);
+        const hotelExists = existReservs.find(reserv => reserv.HotelName === newReserv.HotelName); // Проверка по имени отеля
 
         if (hotelExists) {
             toast.error('Reservation for this hotel already exists.');
@@ -59,6 +58,7 @@ function HotelReservItem(props) {
 
     return (
         <>
+        <ToastContainer/>
             <div className="HotelReservItemWrapper">
                 <div className="HotelReservLeftSide">
                     <div className="HotelReservName">

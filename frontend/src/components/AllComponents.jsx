@@ -5,6 +5,7 @@ import Reserv from "../components/Reserv/index.jsx"
 import Products from "../components/Products/index.jsx"
 import Login from "./login/index.jsx"
 import Registration from "../components/registration/index.jsx"
+import ReservDetails from "./ReservsDetails/index.jsx"
 function AllComponents(props) {
     const location = useLocation()
 
@@ -14,6 +15,7 @@ function AllComponents(props) {
                 <Route path="/" element={<Footer />}/>
                 <Route path="reservs" element={<Reserv />}/>
                 <Route path="login" element={<Login />}/>
+                <Route path="/Reserv/:id" element={<ReservDetails />}/>
                 <Route path="registration" element={<Registration />}/>
                 <Route index element={<Products />} />
             </Route>

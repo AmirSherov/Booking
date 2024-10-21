@@ -3,6 +3,7 @@ import './style.scss';
 import img1 from '../../../assets/images/room1.jpg';
 import img2 from '../../../assets/images/room2.jpeg';
 import { useState, useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
 
 function HotelReserv() {
     const [style1, setStyle1] = useState(0);
@@ -34,6 +35,7 @@ function HotelReserv() {
 
     return (
         <>
+        <ToastContainer/>
             <div style={{ opacity: style1, transition: '0.5s linear' }} className="1">
                 <Item
                     id={1728233406627}
