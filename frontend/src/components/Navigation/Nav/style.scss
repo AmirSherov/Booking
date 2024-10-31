@@ -195,7 +195,6 @@ nav {
     transition: 0.1s;
     top: 0;
     display: none;
-    transform: translate(-450px);
     left: 0;
     .links1{
         display: flex;
@@ -209,6 +208,9 @@ nav {
         position: relative;
         color: white;
         transition: 0.5s linear;
+        span:nth-child(3){
+            font-size: 20px;
+        }
        a{
         transition: 0.3s linear;
         color: white;

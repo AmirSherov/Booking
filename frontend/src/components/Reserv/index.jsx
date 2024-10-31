@@ -86,6 +86,7 @@ function Reserv(props) {
             {modal &&
                 <div className="modal-wrapper">
                     <div className="input-wrapper">
+                        <div onClick={changeModal} className="close">X</div>
                         <label htmlFor="hotel">Hotel Name</label>
                         <input
                             placeholder='Hotel Name'

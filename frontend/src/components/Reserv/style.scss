@@ -53,6 +53,21 @@
         gap: 20px;
         color: white;
         font-size: 20px;
+        .close{
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #272727;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+        }
     }
     &::before {
         content: "";
@@ -106,12 +121,15 @@
         left: 25%;
     }
     @media (max-width: 450px) {
-        left: 15%;
-        margin-right: 20px;
+        left: 13%;
     }
     @media (max-width: 400px) {
-        left: 6%;
-        margin-right: 20px;
+        left: 7%;
+        margin-left: 5px;
+    }
+    @media (max-width: 360px) {
+        left: 4%;
+        margin-left: 5px;
     }
 }
 
