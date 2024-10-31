@@ -1,14 +1,98 @@
 @use "../../assets/styles/resets";
 @import "../../assets/styles/setting";
 
+// .RegistrationWrapper {
+//     width: 100%;
+//     transition: 0.2s;
+//     height: 60vh;
+//     justify-content: center;
+//     align-items: center;
+
+//     .RegistrationInputWrapper{
+//         font-size: 40px;
+//         color: $light;
+//         width: 100%;
+//         height: 60vh;
+//         display: flex;
+//         gap: 20px;
+//         justify-content: center;
+//         align-items: center;
+//         flex-direction: column;
+//     }
+//     .linkWrapper{
+//         font-size: 20px;
+//         .Linkto2{
+//             color: $red;
+//             &:hover{
+//                 text-decoration: underline;
+//             }
+//         }
+//     }
+//         input {
+//             width: 40%;
+//             height: 60px;
+//             background-color: $light;
+//             border: 1px solid #333;
+//             font-size: 30px;
+//             border-radius: 5px;
+//             outline: none;
+//             &:focus {
+//                 outline: none;
+//                 box-shadow: 0 0 15px 10px rgba(255, 140, 0, 0.8);
+//                 padding: 5px;
+//                 transform: scale(1.040);
+//             }
+
+//             &:hover {
+//                 transform: scale(0.96);
+//             }
+//             &::placeholder {
+//                 color: black;
+//                 font-size: 20px;
+//             }
+//         }
+
+//         .registrateBtn {
+//             width: 40%;
+//             height: 60px;
+//             background-color: #333;
+//             font-size: 30px;
+//             transition: 0.2s;
+//             border-radius: 10px;
+//             box-shadow: 2px 4px 8px orange,
+//                 -2px -4px 8px orange;
+//             color: $light;
+//             background: linear-gradient(orange 50%, rgb(167, 255, 3));
+
+//             &:hover {
+//                 box-shadow: 3px 5px 10px orange,
+//                     -3px -5px 10px orange;
+//                 transform: translateY(-3px);
+//             }
+//             &:active {
+//                 transform: scale(0.8);
+//             }
+//         }
+//         @media (max-width:600px) {
+//             .RegistrationInputWrapper{
+//                 input{
+//                     width: 80%;
+//                 }
+//                 .registrateBtn{
+//                     width: 80%;
+//                 }
+//             }
+//         }
+//     }
 .RegistrationWrapper {
     width: 100%;
+    margin-top: 50px;
     transition: 0.2s;
     height: 60vh;
     justify-content: center;
     align-items: center;
 
-    .RegistrationInputWrapper{
+    .RegistrationInputWrapper {
         font-size: 40px;
         color: $light;
         width: 100%;
@@ -18,37 +102,65 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-    }
-    .linkWrapper{
-        font-size: 20px;
-        .Linkto2{
-            color: $red;
-            &:hover{
-                text-decoration: underline;
-            }
-        }
-    }
-        input {
-            width: 40%;
-            height: 60px;
-            background-color: $light;
-            border: 1px solid #333;
-            font-size: 30px;
-            border-radius: 5px;
-            outline: none;
-            &:focus {
-                outline: none;
-                box-shadow: 0 0 15px 10px rgba(255, 140, 0, 0.8);
-                padding: 5px;
-                transform: scale(1.040);
+
+        position: relative; // Относительное позиционирование для контейнера инпутов
+
+        .inputContainer {
+            position: relative; // Позиционирование для инпута и метки
+            width: 40%; // Ширина контейнера инпута
+            margin-bottom: 20px; // Отступ между инпутами
+
+            input {
+                width: 100%;
+                height: 60px;
+                color: $light;
+                font-size: 30px;
+                border: none;
+                border-bottom: 2px solid green;
+                background-color: #33333300;
+                padding: 10px 0 0 0; // Отступ сверху для метки
+                transition: 0.2s; // Плавный переход для эффектов
+
+
+                &:focus {
+                    outline: none;
+                    transform: scale(1.040);
+                }
+
+
+                &::placeholder {
+                    color: transparent; // Скрыть текст плейсхолдера
+                }
             }
 
-            &:hover {
-                transform: scale(0.96);
-            }
-            &::placeholder {
-                color: black;
+            label {
+                position: absolute;
+                left: 10px; // Выравнивание по левому отступу инпута
+                top: 15px; // Позиционирование метки
+                color: white; // Цвет метки
                 font-size: 20px;
+                pointer-events: none; // Запретить взаимодействие мыши с меткой
+                transition: 0.2s; // Плавный переход для эффекта плавания
+            }
+
+            input:focus+label,
+            input:not(:placeholder-shown)+label {
+                // Если инпут в фокусе или содержит текст
+                top: -10px; // Поднимаем метку вверх
+                font-size: 20px; // Уменьшаем размер шрифта метки
+                color: orange; // Изменяем цвет метки при фокусировке
+            }
+        }
+
+        .linkWrapper {
+            font-size: 20px;
+
+            .Linkto2 {
+                color: $red;
+
+                &:hover {
+                    text-decoration: underline;
+                }
             }
         }
 
@@ -64,23 +176,41 @@
             color: $light;
             background: linear-gradient(orange 50%, rgb(167, 255, 3));
 
-            &:hover {
-                box-shadow: 3px 5px 10px orange,
-                    -3px -5px 10px orange;
-                transform: translateY(-3px);
-            }
             &:active {
                 transform: scale(0.8);
             }
         }
-        @media (max-width:600px) {
-            .RegistrationInputWrapper{
-                input{
+
+        @media (max-width: 600px) {
+            .RegistrationInputWrapper {
+                input {
                     width: 80%;
                 }
-                .registrateBtn{
-                    width: 80%;
+
+                .registrateBtn {
+                    width: 100%;
                 }
             }
         }
     }
+
+    @media (max-width:650px) {
+        .RegistrationInputWrapper {
+            width: 100%;
+
+            .inputContainer {
+                width: 90%;
+
+                input {
+                    width: 90%;
+                }
+            }
+        }
+    }
+
+    @media (max-width:350px) {
+        .registrateBtn {
+            width: 80%;
+        }
+    }
+}

@@ -1,73 +1,88 @@
+
+
 import "./style.scss";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from 'react';
-import { useContext } from "react";
-import { context } from "../../../store"
-function Login(props) {
+import { useState, useContext, useEffect } from 'react';
+import { context } from "../../../store";
+
+function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { state, dispatch } = useContext(context)
-    const [ isRegistering, setIsRegistering ] = useState(false);
-    const navigate = useNavigate()
-    async function handleLogin(e) {
-        e.preventDefault();
-        const emailinput = document.querySelector(".email");
-        const passinput = document.querySelector(".pass");
-        try {
-            const response = await fetch('http://localhost:3000/Users');
-            const users = await response.json();
-            const user = users.find(user => user.Email === email && user.Password === password);
+    const { state, dispatch } = useContext(context);
+    const [isRegistering, setIsRegistering] = useState(false);
+    const [users, setUsers] = useState([]);
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
-            if (user) {
-                setIsRegistering(true)
-                setTimeout(() => {
-                    toast.success('Successfully logged in!');
-                    setIsRegistering(false)
-                },2000)
-                setTimeout(() => {
-                    setEmail('')
-                    setPassword('')
-                    navigate('/')
-                    localStorage.setItem('Email', email)
-                }, 1000)
-            } else {
-                toast.error('Invalid email or password');
-                emailinput.style.boxShadow = "0 0 15px 10px rgba(255, 0, 0, 0.8)";
-                passinput.style.boxShadow = "0 0 15px 10px rgba(255, 0, 0, 0.8)";
-                setTimeout(() => {
-                    emailinput.style.boxShadow = "none";
-                    passinput.style.boxShadow = "none";
-                }, 2000);
-            }
+    useEffect(() => {
+        fetchUsers();
+    }, []);
+
+    async function fetchUsers() {
+        try {
+            const response = await fetch('http://127.0.0.1:8000/users');
+            if (!response.ok) throw new Error('Failed to fetch users');
+            const usersData = await response.json();
+            setUsers(usersData);
         } catch (error) {
-            toast.error('An error occurred: ' + error.message);
+            toast.error('An error occurred while fetching users: ' + error.message);
         }
     }
+
+    async function handleLogin(e) {
+        e.preventDefault();
+        setIsRegistering(true); // Начинаем загрузку
+
+        const user = users.find(user => user.email === email && user.password === password); // Проверка на правильные поля
+
+        if (user) {
+            toast.success('Successfully logged in!');
+            localStorage.setItem('Email', email);
+            setTimeout(() => {
+                navigate('/'); // Перенаправляем после успешного логина
+            }, 1000);
+        } else {
+            toast.error('Invalid email or password');
+            setErrorMessage('Invalid email or password'); // Установим сообщение об ошибке
+            setTimeout(() => {
+                setErrorMessage(''); // Сбрасываем сообщение об ошибке
+            }, 2000);
+        }
+
+        setIsRegistering(false); // Заканчиваем загрузку
+    }
+
     return (
         <>
             <form className="LoginContainer" onSubmit={handleLogin}>
                 <ToastContainer />
                 <div className="inputWrapper">
-                    <input
-                        placeholder="Email"
-                        required
-                        type="email"
-                        value={email}
-                        className="email"
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <input
-                        placeholder="Password"
-                        required
-                        className="pass"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
+                    <div className="inputContainer">
+                        <input
+                            placeholder=" "
+                            required
+                            type="email"
+                            value={email}
+                            className={`email ${errorMessage ? 'error' : ''}`}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <label>Email</label>
+                    </div>
+                    <div className="inputContainer">
+                        <input
+                            placeholder=" "
+                            required
+                            className={`pass ${errorMessage ? 'error' : ''}`}
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <label>Password</label>
+                    </div>
                     <button className="confirm">Login</button>
-                    <div className="LinkWrapper">
+                    <div className="linkWrapper">
                         <span className="Link">Don't have an account?</span>
                         <Link className="Linkto" to={"/registration"}>Create It!</Link>
                     </div>
@@ -75,19 +90,8 @@ function Login(props) {
             </form>
             {isRegistering && (
                 <div className="loading">
-                    <div class="lds-spinner">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
+                    <div className="lds-spinner">
+                        {[...Array(12)].map((_, i) => <div key={i}></div>)}
                     </div>
                 </div>
             )}

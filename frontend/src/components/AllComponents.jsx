@@ -15,7 +15,7 @@ function AllComponents(props) {
                 <Route path="/" element={<Footer />}/>
                 <Route path="reservs" element={<Reserv />}/>
                 <Route path="login" element={<Login />}/>
-                <Route path="/Reserv/:id" element={<ReservDetails />}/>
+                <Route path="/reserv/:id" element={<ReservDetails />}/>
                 <Route path="registration" element={<Registration />}/>
                 <Route index element={<Products />} />
             </Route>

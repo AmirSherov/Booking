@@ -1,161 +1,54 @@
-// import "./style.scss";
-// import { useParams } from "react-router";
-// import { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
-// import img1 from "../../assets/images/room1.jpg";
-// import img2 from "../../assets/images/room2.jpeg";
-// function ReservsDetails(props) {
-//     const [reserv, setReserv] = useState({});
-//     const { id } = useParams();
-//     const [existingReservs, setExistingReservs] = useState([]);
-
-//     useEffect(() => {
-//         GetReservsFromDataBase();
-//     }, []);
-
-//     const GetReservsFromDataBase = async () => {
-//         try {
-//             const { data } = await axios.get("http://localhost:3000/Reservs");
-//             setExistingReservs(data);
-//         } catch (error) {
-//             toast.error('Failed to fetch reservations: ' + error.message);
-//         }
-//     };
-
-//     const deleteReservFromDataBase = async (reservId) => {
-//         try {
-//             await axios.delete(`http://localhost:3000/Reservs/${reservId}`);
-//             toast.success('Reservation deleted successfully!');
-//             setTimeout(() => {
-//                 window.location.reload()
-//             }, 5400)
-//             setExistingReservs(existingReservs.filter(reserv => reserv.id !== reservId));
-//         } catch (error) {
-//             toast.error('Failed to delete reservation: ' + error.message);
-//         }
-//     };
-
-//     const checkAndDeleteReserv = () => {
-//         const existingReserv = existingReservs.find(reserv => reserv.HotelName === hotel);
-//         if (!existingReserv) {
-//             toast.error('Reservation not found.');
-//             return;
-//         }
-
-//         const confirmDelete = window.confirm('Do you really want to delete this reservation?');
-//         if (confirmDelete) {
-//             deleteReservFromDataBase(id);
-//         } else {
-//             toast.info('Reservation not deleted.');
-//         }
-//     };
-//     useEffect(() => {
-//         const fetchData = async () => {
-//             const response = await fetch(`http://localhost:3000/Reservs/${id}`);
-//             const data = await response.json();
-//             setReserv(data);
-//         };
-//         fetchData();
-//     }, []);
-//     if (!reserv) {
-//         return "Lodaing ...";
-//     }
-//     const images = [img1, img2];
-//     const Img = images[Math.floor(Math.random() * images.length)] || '';
-//     return (
-//         <>
-//             <Link to={"/reservs"}>Go Back</Link>
-//             <div className="ReservDetailsWrapper">
-//                 <div className="ReservDetailsLeftSide">
-//                     <div className="DetailsHotelName">
-//                         {reserv.HotelName}
-//                     </div>
-//                     <div className="DetailsImg">
-//                         <img src={Img} alt="" />
-//                     </div>
-//                     <div className="DetailsPrice">
-//                         {reserv.Price}.00<span>$</span>
-//                     </div>
-//                 </div>
-//                 <div className="ReservDetailsRightSide">
-//                     <div className="DetailsDate">
-//                         <span>Date: </span>{reserv.Date ? reserv.Date : 'Undefined'}
-//                     </div>
-//                     <div className="DetailsTime">
-//                         <span>Time: </span>{reserv.Time}
-//                     </div>
-//                     <div className="DetailsId">
-//                         <span>ID: </span>{reserv.id}
-//                     </div>
-//                     <div className="deleteBtn">
-//                         <button onClick={checkAndDeleteReserv}>Delete</button>
-//                     </div>
-//                 </div>
-//             </div>
-//         </>
-//     )
-// }
-// export default ReservsDetails
-
 import "./style.scss";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import img1 from "../../assets/images/room1.jpg";
 import img2 from "../../assets/images/room2.jpeg";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 
-function ReservsDetails(props) {
-    const { id } = useParams();
-    const [reserv, setReserv] = useState(null);
-    const [existingReservs, setExistingReservs] = useState([]);
-    const [modal , setModal] = useState(false)
-    const navigate  = useNavigate()
+function ReservsDetails() {
+    const { id } = useParams(); // Получаем ID из URL
+    const [reserv, setReserv] = useState(null); // Состояние для хранения данных резерва
+    const [modal, setModal] = useState(false); // Состояние для отображения загрузки
+    const navigate = useNavigate(); // Хук для навигации
 
     useEffect(() => {
-        fetchData();
-    }, [id]); 
+        fetchData(); // Получаем данные резерва при загрузке компонента
+    }, [id]);
 
     const fetchData = async () => {
-        setModal(true)
-            setTimeout(()=>{setModal(false)},1000)
-            const [reservResponse, reservsResponse] = await Promise.all([
-                axios.get(`http://localhost:3000/Reservs/${id}`),
-                axios.get("http://localhost:3000/Reservs")
-            ]);
-            setReserv(reservResponse.data);
-            setExistingReservs(reservsResponse.data);
-        
+        setModal(true); // Показываем модалку загрузки
+        try {
+            const reservResponse = await axios.get(`http://127.0.0.1:8000/reservs/${id}`); // Запрос к API для получения резерва по ID
+            setReserv(reservResponse.data); // Сохраняем данные резерва
+        } catch (error) {
+            toast.error('Failed to fetch reservation: ' + error.message); // Обработка ошибок
+        } finally {
+            setModal(false); // Скрываем модалку загрузки
+        }
     };
 
     const deleteReservFromDataBase = async (reservId) => {
         try {
-            await axios.delete(`http://localhost:3000/Reservs/${reservId}`);
+            await axios.delete(`http://127.0.0.1:8000/reservs/${reservId}`); // Запрос на удаление резерва по ID
             toast.success('Reservation deleted successfully!');
-            setExistingReservs(existingReservs.filter(reserv => reserv.id !== reservId));
-            setTimeout(()=>{navigate('/reservs')},3000)
+            navigate('/reservs'); // Перенаправляем пользователя на страницу резерваций
         } catch (error) {
             toast.error('Failed to delete reservation: ' + error.message);
         }
     };
 
     const checkAndDeleteReserv = () => {
-        const existingReserv = existingReservs.find(r => r.id === id);  
-        if (!existingReserv) {
-            toast.error('Reservation not found.');
-            return;
-        }
         const confirmDelete = window.confirm('Do you really want to delete this reservation?');
         if (confirmDelete) {
-            deleteReservFromDataBase(id);
+            deleteReservFromDataBase(id); // Удаляем резерв, если пользователь подтвердил
         } else {
             toast.info('Reservation not deleted.');
         }
     };
-
+    console.log(reserv);
     if (!reserv) {
-        return <p>Loading...</p>; 
+        return <p>Loading...</p>; // Отображаем сообщение, пока данные загружаются
     }
 
     const images = [img1, img2];
@@ -163,9 +56,9 @@ function ReservsDetails(props) {
 
     return (
         <>
-        <ToastContainer/>
+            <ToastContainer />
             <div className="ReservDetailsWrapper">
-            <Link className="go-back" to="/reservs">Go Back</Link>
+                <Link className="go-back" to="/reservs">Go Back</Link>
                 <div className="ReservDetailsLeftSide">
                     <div className="DetailsHotelName">{reserv.HotelName}</div>
                     <div className="DetailsImg">
@@ -183,30 +76,20 @@ function ReservsDetails(props) {
                         <span>Time: </span>{reserv.Time}
                     </div>
                     <div className="DetailsId">
-                        <span>ID: </span>{reserv.id}
+                        <span>ID: </span>{id}
                     </div>
                     <div className="deleteBtn">
                         <button onClick={checkAndDeleteReserv}>Delete</button>
                     </div>
                 </div>
             </div>
-            {modal &&
-            <div className="loading">
-            <div class="lds-spinner">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>}
+            {modal && (
+                <div className="loading">
+                    <div className="lds-spinner">
+                        {[...Array(12)].map((_, index) => <div key={index}></div>)}
+                    </div>
+                </div>
+            )}
         </>
     );
 }

@@ -1,10 +1,12 @@
+
+
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./style.scss";
 import { useNavigate, Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-function Registration(props) {
+function Registration() {
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
     const [info, setInfo] = useState({
@@ -13,6 +15,11 @@ function Registration(props) {
         ConfirmPassword: ''
     });
     const [isRegistering, setIsRegistering] = useState(false);
+    
+    // Рефы для полей ввода
+    const emailRef = useRef(null);
+    const passwordRef = useRef(null);
+    const confirmPasswordRef = useRef(null);
 
     useEffect(() => {
         getExistUsersFromDataBase();
@@ -26,31 +33,31 @@ function Registration(props) {
     async function sendInfoToDataBase() {
         try {
             setIsRegistering(true);
-            const response = await fetch('http://localhost:3000/Users', {
+            const response = await fetch('http://127.0.0.1:8000/users', {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ...info, id: Date.now().toString() })
+                body: JSON.stringify({ ...info})
             });
             if (response.ok) {
                 setInfo({ Email: '', Password: '', ConfirmPassword: '' });
                 getExistUsersFromDataBase();
+                toast.success('Successfully Registered'); // Перенаправление после успешной регистрации
+                setTimeout(()=>{
+                    navigate('/login');
+                },3000)
             } else {
                 toast.error('Failed to register');
             }
         } catch (error) {
             toast.error('An error occurred: ' + error.message);
         } finally {
-            setTimeout(() => {
-                setIsRegistering(false);
-                toast.success('Successfully Registered');
-            }, 2000);
-            
+            setIsRegistering(false);
         }
     }
 
     async function getExistUsersFromDataBase() {
         try {
-            const response = await fetch("http://localhost:3000/Users");
+            const response = await fetch("http://127.0.0.1:8000/users");
             if (response.ok) {
                 const data = await response.json();
                 setUsers(data);
@@ -63,46 +70,48 @@ function Registration(props) {
     }
 
     async function checkInfo() {
-        let passinput = document.querySelector(".pass1");
-        let passinput2 = document.querySelector(".pass2");
-        let passinput3 = document.querySelector(".email");
         const { Password, ConfirmPassword, Email } = info;
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // Более универсальная проверка
 
-        const emailRegex = /^[a-zA-Z0-9]+@gmail\.com$/;
-
-        if (users.some(user => user.Email === Email)) {
-            toast.error('The user already exists');
-            passinput3.style.boxShadow = "0 0 15px 10px rgba(255, 0, 0, 0.8)";
+        if (!Email) {
+            toast.error('Email cannot be empty');
+            emailRef.current.style.borderBottom = "2px solid red";
             setTimeout(() => {
-                passinput3.style.boxShadow = "none";
+                emailRef.current.style.borderBottom = "";
+            }, 5000);
+        } else if (users.some(user => user.email === Email)) {
+            toast.error('The user already exists');
+            emailRef.current.style.borderBottom = "2px solid red";
+            setTimeout(() => {
+                emailRef.current.style.borderBottom = "";
             }, 5000);
         } else if (Password.length < 8) {
             toast.error('Password length must be more than 8 characters');
-            passinput.style.boxShadow = "0 0 15px 10px rgba(255, 0, 0, 0.8)";
+            passwordRef.current.style.borderBottom = "2px solid red";
             setTimeout(() => {
-                passinput.style.boxShadow = "none";
+                passwordRef.current.style.borderBottom = "";
             }, 5000);
         } else if (Password !== ConfirmPassword) {
             toast.error('Passwords do not match');
-            passinput.style.boxShadow = "0 0 15px 10px rgba(255, 0, 0, 0.8)";
-            passinput2.style.boxShadow = "0 0 15px 10px rgba(255, 0, 0, 0.8)";
+            passwordRef.current.style.borderBottom = "2px solid red";
+            confirmPasswordRef.current.style.borderBottom = "2px solid red";
             setTimeout(() => {
-                passinput.style.boxShadow = "none";
-                passinput2.style.boxShadow = "none";
+                passwordRef.current.style.borderBottom = "";
+                confirmPasswordRef.current.style.borderBottom = "";
             }, 5000);
         } else if (!Password || !ConfirmPassword) {
             toast.error('Password fields cannot be empty');
-            passinput.style.boxShadow = "0 0 15px 10px rgba(255, 0, 0, 0.8)";
-            passinput2.style.boxShadow = "0 0 15px 10px rgba(255, 0, 0, 0.8)";
+            passwordRef.current.style.borderBottom = "2px solid red";
+            confirmPasswordRef.current.style.borderBottom = "2px solid red";
             setTimeout(() => {
-                passinput.style.boxShadow = "none";
-                passinput2.style.boxShadow = "none";
+                passwordRef.current.style.borderBottom = "";
+                confirmPasswordRef.current.style.borderBottom = "";
             }, 5000);
         } else if (!emailRegex.test(Email)) {
-            toast.error('Invalid email! Must be a Gmail address.');
-            passinput3.style.boxShadow = "0 0 15px 10px rgba(255, 0, 0, 0.8)";
+            toast.error('Invalid email! Must be a valid email address.');
+            emailRef.current.style.borderBottom = "2px solid red";
             setTimeout(() => {
-                passinput3.style.boxShadow = "none";
+                emailRef.current.style.borderBottom = "";
             }, 5000);
         } else {
             await sendInfoToDataBase();
@@ -114,40 +123,57 @@ function Registration(props) {
             <div className="RegistrationWrapper">
                 <ToastContainer theme='dark' />
                 <div className="RegistrationInputWrapper">
-                    <input value={info.Email} required onChange={setChangesLocal} className='email' name="Email" placeholder="Email" type="email" />
-                    <input value={info.Password} required className='pass1' onChange={setChangesLocal} name='Password' placeholder="Password" type="password" />
-                    <input value={info.ConfirmPassword} required className='pass2' onChange={setChangesLocal} name='ConfirmPassword' placeholder="Confirm Password" type="password" />
+                    <div className="inputContainer">
+                        <input
+                            ref={emailRef}
+                            value={info.Email}
+                            required
+                            onChange={setChangesLocal}
+                            className='email'
+                            name="Email"
+                            placeholder=" " // Плейсхолдер оставляем пустым для плавающей метки
+                        />
+                        <label>Email</label>
+                    </div>
+
+                    <div className="inputContainer">
+                        <input
+                            ref={passwordRef}
+                            value={info.Password}
+                            required
+                            onChange={setChangesLocal}
+                            className='pass1'
+                            name="Password"
+                            placeholder=" " // Плейсхолдер оставляем пустым для плавающей метки
+                        />
+                        <label>Password</label>
+                    </div>
+
+                    <div className="inputContainer">
+                        <input
+                            ref={confirmPasswordRef}
+                            value={info.ConfirmPassword}
+                            required
+                            onChange={setChangesLocal}
+                            className='pass2'
+                            name="ConfirmPassword"
+                            placeholder=" " // Плейсхолдер оставляем пустым для плавающей метки
+                        />
+                        <label>Confirm Password</label>
+                    </div>
+
                     <button
+                        className='registrateBtn'
                         onClick={checkInfo}
-                        className="registrateBtn"
                         disabled={isRegistering}
                     >
                         {isRegistering ? 'Registering...' : 'Register'}
                     </button>
                     <div className="linkWrapper">
-                        <span className="Link2">Already have an account?</span>
-                        <Link className="Linkto2" to={'/login'}>Log In!</Link>
+                        <Link className="Linkto2" to="/login">Back to login</Link>
                     </div>
                 </div>
             </div>
-            {isRegistering && (
-                <div className="loading">
-                    <div class="lds-spinner">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                </div>
-                </div>
-            )}
         </>
     );
 }

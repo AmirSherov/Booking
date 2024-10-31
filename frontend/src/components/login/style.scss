@@ -5,97 +5,137 @@
     width: 100%;
     transition: 0.2s;
     height: 60vh;
+    margin-top: 50px;
     justify-content: center;
     align-items: center;
+    color: $light;
 
     .linkWrapper {
-        font-size: 40px;
+        font-size: 20px;
         color: $light;
         width: 300px;
     }
 
     .Link {
         color: white;
-        margin-right: 10px;
+        margin-right: 20px;
+        font-size: 19px;
     }
 
     .Linkto {
         color: $red;
+        font-size: 20px;
 
         &:hover {
             text-decoration: underline;
         }
     }
-
+    @media (max-width: 320px) {
+        .Link{
+            font-size: 15px;
+            margin-left: 18px;
+        }
+        .Linkto{
+            font-size: 15px;
+            margin: 0;
+            padding: 0;
+        }
+    }
     .inputWrapper {
         width: 100%;
         height: 60vh;
         display: flex;
-        gap: 20px;
+        gap: 40px;
         justify-content: center;
         align-items: center;
         flex-direction: column;
 
-        input {
-            width: 40%;
-            height: 60px;
-            background-color: $light;
-            border: 1px solid #333;
-            font-size: 30px;
-            outline: none;
-            border-radius: 5px;
-
-            &:focus {
-                transform: scale(1.060);
-                outline: none;
-                box-shadow: 0 0 15px 10px rgba(255, 140, 0, 0.8);
-                padding: 5px;
-            }
-
-            &:hover {
-                transform: scale(0.96);
-            }
-
-            &::placeholder {
-                color: black;
-                font-size: 20px;
-            }
-        }
-
+        position: relative; // Относительное позиционирование для контейнера инпутов
         button {
-            width: 40%;
-            height: 60px;
-            background-color: #333;
-            font-size: 30px;
-            transition: 0.2s;
-            border-radius: 10px;
-            box-shadow: 2px 4px 8px orange,
-                -2px -4px 8px orange;
-            color: $light;
-            background: linear-gradient(orange 50%, rgb(167, 255, 3));
+                        width: 40%;
+                        height: 60px;
+                        background-color: #333;
+                        font-size: 30px;
+                        transition: 0.2s;
+                        border-radius: 10px;
+                        box-shadow: 2px 4px 8px orange,
+                            -2px -4px 8px orange;
+                        color: $light;
+                        background: linear-gradient(orange 50%, rgb(167, 255, 3));
+            
+                        &:hover {
+                            box-shadow: 3px 5px 10px orange,
+                                -3px -5px 10px orange;
+                            transform: translateY(-3px);
+                        }
+            
+                        &:active {
+                            transform: scale(0.8);
+                        }
+                    }
 
-            &:hover {
-                box-shadow: 3px 5px 10px orange,
-                    -3px -5px 10px orange;
-                transform: translateY(-3px);
+        .inputContainer {
+            position: relative;
+            width: 40%;
+            margin-bottom: 20px;
+
+            input {
+                width: 100%;
+                height: 80px;
+                background-color: #33333300;
+                backdrop-filter: blur(10px);
+                border: none;
+                border-bottom: 2px solid green;
+                color: $light;
+                font-size: 20px;
+                padding: 20px 0 0 0; // Отступ сверху для места метки
+                transition: 0.2s; // Плавный переход для эффектов
+
+                &:focus {
+                    outline: none;
+                    padding: 5px;
+                }
+
+                &:hover {
+                    transform: scale(0.96);
+                }
+
+                &::placeholder {
+                    color: transparent; // Скрыть текст плейсхолдера
+                }
             }
 
-            &:active {
-                transform: scale(0.8);
+            label {
+                position: absolute;
+                left: 20px; // Выравнивание по левому отступу инпута
+                top: 20px; // Позиционирование метки выше инпута
+                color: white;
+                font-size: 20px;
+                pointer-events: none; // Запретить взаимодействие мыши с меткой
+                transition: 0.2s; // Плавный переход для эффекта плавания
+            }
+
+            input:focus + label,
+            input:not(:placeholder-shown) + label { // Если инпут в фокусе или содержит текст
+                top: -10px; // Поднимаем метку вверх
+                font-size: 16px; // Уменьшаем размер шрифта метки
+                color: green; // Изменяем цвет метки при фокусировке
             }
         }
     }
 
-    @media (max-width:600px) {
+    @media (max-width: 600px) {
         .inputWrapper {
+           .inputContainer{
+            width: 70%;
             input {
-                width: 80%;
+                width: 100%;
             }
+           }
 
             button {
                 width: 80%;
             }
         }
-
     }
 }

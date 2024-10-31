@@ -1,25 +1,16 @@
 {
-  "Reservs": [
-    {
-      "id": "1729506618437",
-      "HotelName": "Amir",
-      "Date": "3233-02-23",
-      "Price": "33",
-      "Time": "23:23"
-    },
-    {
-      "id": "1729507301996",
-      "HotelName": "San Francisco",
-      "Date": "26.03.2025",
-      "Price": 500,
-      "Time": "17:30"
-    }
-  ],
+  "Reservs": [],
   "Users": [
     {
       "id": "1727987540947",
       "Email": "Amir@gmail.com",
       "Password": "123456789"
+    },
+    {
+      "id": "1729857685384",
+      "Email": "shoxa@gmail.com",
+      "Password": "12345678",
+      "ConfirmPassword": "12345678"
     }
   ]
 }

@@ -17,7 +17,7 @@ function ReservItem({ hotel, id, price, date, time }) {
                     <div className="price"><span>Price: $</span>{price}.00</div>
                 </div>
                 <div className="rightSide">
-                    <Link to={`/Reserv/${id}`}><CiCircleInfo />More</Link>
+                    <Link to={`/reserv/${id}`}><CiCircleInfo />More</Link>
                 </div>
             </div>
         

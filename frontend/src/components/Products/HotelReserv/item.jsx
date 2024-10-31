@@ -13,7 +13,7 @@ function HotelReservItem(props) {
 
     const GetReservsFromDataBase = async () => {
         try {
-            const response = await fetch("http://localhost:3000/Reservs");
+            const response = await fetch("http://127.0.0.1:8000/reservs");
             const data = await response.json();
             setExistReservs(data);
         } catch (error) {
@@ -23,7 +23,7 @@ function HotelReservItem(props) {
 
     const SendDataToDataBase = async () => {
         try {
-            await fetch('http://localhost:3000/Reservs', {
+            await fetch('http://127.0.0.1:8000/reservs', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
