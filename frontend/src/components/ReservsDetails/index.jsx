@@ -19,7 +19,9 @@ function ReservsDetails() {
     const fetchData = async () => {
         setModal(true); // Показываем модалку загрузки
         try {
-            const reservResponse = await axios.get(`http://127.0.0.1:8000/reservs/${id}`); // Запрос к API для получения резерва по ID
+            // Ждем 500 мс перед запросом
+            await new Promise(resolve => setTimeout(resolve, 500));
+            const reservResponse = await axios.get(`https://backend1-o3bn.onrender.com/reservs/${id}`); // Запрос к API для получения резерва по ID
             setReserv(reservResponse.data); // Сохраняем данные резерва
         } catch (error) {
             toast.error('Failed to fetch reservation: ' + error.message); // Обработка ошибок
@@ -46,7 +48,7 @@ function ReservsDetails() {
             toast.info('Reservation not deleted.');
         }
     };
-    console.log(reserv);
+
     if (!reserv) {
         return <p>Loading...</p>; // Отображаем сообщение, пока данные загружаются
     }
