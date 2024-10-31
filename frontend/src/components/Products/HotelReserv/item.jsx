@@ -13,7 +13,7 @@ function HotelReservItem(props) {
 
     const GetReservsFromDataBase = async () => {
         try {
-            const response = await fetch("http://127.0.0.1:8000/reservs");
+            const response = await fetch("https://backend1-o3bn.onrender.com/reservs");
             const data = await response.json();
             setExistReservs(data);
         } catch (error) {
@@ -23,7 +23,7 @@ function HotelReservItem(props) {
 
     const SendDataToDataBase = async () => {
         try {
-            await fetch('http://127.0.0.1:8000/reservs', {
+            await fetch('https://backend1-o3bn.onrender.com/reservs', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -13,7 +13,7 @@ import 'sweetalert2/src/sweetalert2.scss';
 function Nav(props) {
     const [activeLink, setActiveLink] = useState('/')
     const { state, dispatch } = useContext(context)
-    const [modal, setModal] = useState(false)
+    const [modal, setModal] = useState(true)
     const [log, setLog] = useState(false)
     const [email, setEmail] = useState('')
     function setActiveClass(path) {

@@ -22,7 +22,7 @@ function Login() {
 
     async function fetchUsers() {
         try {
-            const response = await fetch('http://127.0.0.1:8000/users');
+            const response = await fetch('https://backend1-o3bn.onrender.com/users');
             if (!response.ok) throw new Error('Failed to fetch users');
             const usersData = await response.json();
             setUsers(usersData);

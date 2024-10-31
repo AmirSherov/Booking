@@ -30,7 +30,7 @@ function ReservsDetails() {
 
     const deleteReservFromDataBase = async (reservId) => {
         try {
-            await axios.delete(`http://127.0.0.1:8000/reservs/${reservId}`); // Запрос на удаление резерва по ID
+            await axios.delete(`https://backend1-o3bn.onrender.com/reservs/${reservId}`); // Запрос на удаление резерва по ID
             toast.success('Reservation deleted successfully!');
             navigate('/reservs'); // Перенаправляем пользователя на страницу резерваций
         } catch (error) {

@@ -33,7 +33,7 @@ function Registration() {
     async function sendInfoToDataBase() {
         try {
             setIsRegistering(true);
-            const response = await fetch('http://127.0.0.1:8000/users', {
+            const response = await fetch('https://backend1-o3bn.onrender.com/users', {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...info})
@@ -57,7 +57,7 @@ function Registration() {
 
     async function getExistUsersFromDataBase() {
         try {
-            const response = await fetch("http://127.0.0.1:8000/users");
+            const response = await fetch("https://backend1-o3bn.onrender.com/users");
             if (response.ok) {
                 const data = await response.json();
                 setUsers(data);

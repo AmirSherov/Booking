@@ -27,7 +27,7 @@ function Reserv(props) {
     }
     function SendDataToDataBase() {
         setModal1(true);
-        fetch('http://127.0.0.1:8000/reservs', {
+        fetch('https://backend1-o3bn.onrender.com/reservs', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json', // Добавьте этот заголовок
@@ -70,7 +70,7 @@ function Reserv(props) {
     }
 
     function GetReservsFromDataBase() {
-        fetch("http://127.0.0.1:8000/reservs")
+        fetch("https://backend1-o3bn.onrender.com/reservs")
             .then(response => response.json())
             .then(data => setReservs(data))
             .catch(error => console.log("Failed to fetch reservations: " + error.message));
